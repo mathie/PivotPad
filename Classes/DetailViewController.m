@@ -166,6 +166,7 @@
 
 - (void)doLogin {
 	[self dismissModalViewControllerAnimated:YES];
+    [[self projectsViewController] getProjectsFromPivotal];
 }
 
 @end

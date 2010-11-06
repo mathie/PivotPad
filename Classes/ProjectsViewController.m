@@ -150,22 +150,25 @@
 #pragma mark Pivotal requests
 - (void)getProjectsFromPivotal
 {
-  [[self networkQueue] cancelAllOperations];
+    [[self networkQueue] cancelAllOperations];
 
-  [self setNetworkQueue:[ASINetworkQueue queue]];
-  [[self networkQueue] setDelegate:self];
-  [[self networkQueue] setRequestDidFinishSelector:@selector(requestFinished:)];
-  [[self networkQueue] setRequestDidFailSelector:@selector(requestFailed:)];
-  [[self networkQueue] setQueueDidFinishSelector:@selector(queueFinished:)];
+    [self setNetworkQueue:[ASINetworkQueue queue]];
+    [[self networkQueue] setDelegate:self];
+    [[self networkQueue] setRequestDidFinishSelector:@selector(requestFinished:)];
+    [[self networkQueue] setRequestDidFailSelector:@selector(requestFailed:)];
+    [[self networkQueue] setQueueDidFinishSelector:@selector(queueFinished:)];
 
-  NSURL *url = [NSURL URLWithString:@"https://www.pivotaltracker.com/services/v3/projects"];
-  ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-	
-  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-  [request addRequestHeader:@"X-TrackerToken" value:[userDefaults objectForKey:@"token"]];
-  [[self networkQueue] addOperation:request];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDefaults objectForKey:@"token"];
+    if(token != nil) {
+        NSURL *url = [NSURL URLWithString:@"https://www.pivotaltracker.com/services/v3/projects"];
+        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
 
-  [[self networkQueue] go];
+        [request addRequestHeader:@"X-TrackerToken" value:token];
+        [[self networkQueue] addOperation:request];
+
+        [[self networkQueue] go];
+    }
 }
 
 - (void)requestFinished:(ASIHTTPRequest *)request {
