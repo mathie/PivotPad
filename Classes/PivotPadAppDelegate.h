@@ -27,7 +27,6 @@
     NSManagedObjectContext *managedObjectContext_;
     NSManagedObjectModel *managedObjectModel_;
     NSPersistentStoreCoordinator *persistentStoreCoordinator_;
-    ASINetworkQueue *networkQueue;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -39,8 +38,6 @@
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-@property (nonatomic, retain) ASINetworkQueue *networkQueue;
 
 - (NSURL *)applicationDocumentsDirectory;
-- (void)doNetworkOperations;
 @end

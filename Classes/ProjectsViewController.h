@@ -7,12 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 
+@class ASINetworkQueue;
+@class DetailViewController;
 
 @interface ProjectsViewController : UITableViewController {
+    DetailViewController *detailViewController;
+    NSManagedObjectContext *managedObjectContext;
 	NSArray *projects;
+  ASINetworkQueue *networkQueue;
 }
 
+@property (nonatomic, retain) IBOutlet DetailViewController *detailViewController;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+
 @property (nonatomic, retain) NSArray *projects;
+@property (nonatomic, retain) ASINetworkQueue *networkQueue;
+
+- (void)getProjectsFromPivotal;
 
 @end

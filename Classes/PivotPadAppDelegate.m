@@ -11,14 +11,10 @@
 
 #import "RootViewController.h"
 #import "DetailViewController.h"
-#import "ASIHTTPRequest.h"
-#import "ASINetworkQueue.h"
-#import "TouchXML.h"
-#import "Project.h"
 
 @implementation PivotPadAppDelegate
 
-@synthesize window, splitViewController, rootViewController, detailViewController, networkQueue;
+@synthesize window, splitViewController, rootViewController, detailViewController;
 
 
 #pragma mark -
@@ -32,9 +28,6 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-    
-    [self doNetworkOperations];
-
 	// Add the split view controller's view to the window and display.
 	[self.window addSubview:splitViewController.view];
     [self.window makeKeyAndVisible];
@@ -76,73 +69,6 @@
             abort();
         } 
     }
-}
-
-#pragma mark -
-#pragma mark HTTP Request management
-
-- (void)doNetworkOperations
-{
-	// Stop anything already in the queue before removing it
-	[[self networkQueue] cancelAllOperations];
-    
-	// Creating a new queue each time we use it means we don't have to worry about clearing delegates or resetting progress tracking
-	[self setNetworkQueue:[ASINetworkQueue queue]];
-	[[self networkQueue] setDelegate:self];
-	[[self networkQueue] setRequestDidFinishSelector:@selector(requestFinished:)];
-	[[self networkQueue] setRequestDidFailSelector:@selector(requestFailed:)];
-	[[self networkQueue] setQueueDidFinishSelector:@selector(queueFinished:)];
-    
-    NSURL *url = [NSURL URLWithString:@"http://fakept.heroku.com/services/v3/projects"];
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    [request addRequestHeader:@"X-TrackerToken" value:@"sometokenstring"];
-    [[self networkQueue] addOperation:request];
-    
-	[[self networkQueue] go];
-}
-
-- (void)requestFinished:(ASIHTTPRequest *)request {
-	if ([[self networkQueue] requestsCount] == 0) {
-		[self setNetworkQueue:nil]; 
-	}
-
-	NSLog(@"Request %@ finished successfully, received response:", [request url]);
-    NSString *responseString = [request responseString];
-    NSLog(@"%@", responseString);
-
-    NSData *responseData = [request responseData];
-    CXMLDocument *doc = [[[CXMLDocument alloc] initWithData:responseData options:0 error:nil] autorelease];
-
-    NSMutableArray *projects = [[NSMutableArray alloc] init];
-    NSArray *projectNodes = [doc nodesForXPath:@"//project" error:nil];
-    for(CXMLElement * projectNode in projectNodes) {
-        NSLog(@"Look, ma, a project node: %@", projectNode);
-        NSString *projectId = [[[projectNode elementsForName:@"id"] objectAtIndex:0] stringValue];
-        NSString *name = [[[projectNode elementsForName:@"name"] objectAtIndex:0] stringValue];
-        Project *project = [[Project alloc] initWithProjectId:projectId andName:name];
-        [projects addObject:project];
-    }
-    NSLog(@"Created projects array: %@", projects);
-    for(Project *project in projects) {
-        NSLog(@"Found project id %@ with name %@", [project projectId], project.name);
-    }
-}
-
-- (void)requestFailed:(ASIHTTPRequest *)request {
-	if ([[self networkQueue] requestsCount] == 0) {
-		[self setNetworkQueue:nil]; 
-	}
-
-    NSError *error = [request error];
-    NSLog(@"Request %@ failed: %@", [request url], error);
-}
-
-- (void)queueFinished:(ASINetworkQueue *)queue
-{
-	if ([[self networkQueue] requestsCount] == 0) {
-		[self setNetworkQueue:nil]; 
-	}
-	NSLog(@"Queue finished");
 }
 
 #pragma mark -
@@ -250,8 +176,6 @@
 
 
 - (void)dealloc {
-    [networkQueue release];
-
     [managedObjectContext_ release];
     [managedObjectModel_ release];
     [persistentStoreCoordinator_ release];

@@ -8,9 +8,12 @@
 
 #import "ProjectsViewController.h"
 #import "Project.h"
+#import "ASIHTTPRequest.h"
+#import "ASINetworkQueue.h"
+#import "TouchXML.h"
 
 @implementation ProjectsViewController
-@synthesize projects;
+@synthesize detailViewController, managedObjectContext, projects, networkQueue;
 
 #pragma mark -
 #pragma mark Initialization
@@ -30,9 +33,9 @@
 #pragma mark -
 #pragma mark View lifecycle
 
-/*
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self getProjectsFromPivotal];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -40,7 +43,6 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-*/
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
@@ -142,6 +144,69 @@
 }
 */
 
+#pragma mark -
+#pragma mark Pivotal requests
+- (void)getProjectsFromPivotal
+{
+  [[self networkQueue] cancelAllOperations];
+
+  [self setNetworkQueue:[ASINetworkQueue queue]];
+  [[self networkQueue] setDelegate:self];
+  [[self networkQueue] setRequestDidFinishSelector:@selector(requestFinished:)];
+  [[self networkQueue] setRequestDidFailSelector:@selector(requestFailed:)];
+  [[self networkQueue] setQueueDidFinishSelector:@selector(queueFinished:)];
+
+  NSURL *url = [NSURL URLWithString:@"http://fakept.heroku.com/services/v3/projects"];
+  ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+  [request addRequestHeader:@"X-TrackerToken" value:@"sometokenstring"];
+  [[self networkQueue] addOperation:request];
+
+  [[self networkQueue] go];
+}
+
+- (void)requestFinished:(ASIHTTPRequest *)request {
+  if ([[self networkQueue] requestsCount] == 0) {
+    [self setNetworkQueue:nil]; 
+  }
+
+  NSLog(@"Request %@ finished successfully, received response:", [request url]);
+  NSString *responseString = [request responseString];
+  NSLog(@"%@", responseString);
+
+  NSData *responseData = [request responseData];
+  CXMLDocument *doc = [[[CXMLDocument alloc] initWithData:responseData options:0 error:nil] autorelease];
+
+  self.projects = [[NSMutableArray alloc] init];
+  NSArray *projectNodes = [doc nodesForXPath:@"//project" error:nil];
+  for(CXMLElement * projectNode in projectNodes) {
+    NSLog(@"Look, ma, a project node: %@", projectNode);
+    NSString *projectId = [[[projectNode elementsForName:@"id"] objectAtIndex:0] stringValue];
+    NSString *name = [[[projectNode elementsForName:@"name"] objectAtIndex:0] stringValue];
+    Project *project = [[Project alloc] initWithProjectId:projectId andName:name];
+    [(NSMutableArray *)projects addObject:project];
+  }
+  NSLog(@"Created projects array: %@", projects);
+  for(Project *project in projects) {
+    NSLog(@"Found project id %@ with name %@", [project projectId], project.name);
+  }
+}
+
+- (void)requestFailed:(ASIHTTPRequest *)request {
+  if ([[self networkQueue] requestsCount] == 0) {
+    [self setNetworkQueue:nil]; 
+  }
+
+  NSError *error = [request error];
+  NSLog(@"Request %@ failed: %@", [request url], error);
+}
+
+- (void)queueFinished:(ASINetworkQueue *)queue
+{
+  if ([[self networkQueue] requestsCount] == 0) {
+    [self setNetworkQueue:nil]; 
+  }
+  NSLog(@"Queue finished");
+}
 
 #pragma mark -
 #pragma mark Table view delegate
@@ -175,6 +240,7 @@
 
 
 - (void)dealloc {
+    [networkQueue release];
 	[projects dealloc];
     [super dealloc];
 }

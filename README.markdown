@@ -22,3 +22,19 @@ example:
 
 which is the first thing we'll need to do with the API to get a working token
 to get the rest of the information!
+
+## Workflow for retrieving from PT
+
+* Make initial request with username and password to retrieve valid API token.
+  If this fails, prompt the user for their username and password.
+
+* When it succeeds, record the active API token for the remainder of the
+  session.
+
+* Request a list of projects.
+
+* When the list of projects come back, parse and display the list of projects
+  in the UI.
+
+* Then, in the background, potentially in parallel, grab a list of all the
+  stories for each project.
