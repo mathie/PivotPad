@@ -26,6 +26,10 @@
 		C96CB9521285BF1A00609759 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C96CB94B1285BF1A00609759 /* Icon.png */; };
 		C96CB9531285BF1A00609759 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C96CB94C1285BF1A00609759 /* Icon@2x.png */; };
 		C96CB9541285BF1A00609759 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = C96CB94D1285BF1A00609759 /* iTunesArtwork.png */; };
+		912635401285877000C4ED47 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9126353E1285877000C4ED47 /* LoginViewController.m */; };
+		912635411285877000C4ED47 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9126353F1285877000C4ED47 /* LoginViewController.xib */; };
+		9126365A1285BE5F00C4ED47 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 912636591285BE5F00C4ED47 /* Project.m */; };
+		912636B61285C80D00C4ED47 /* ProjectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912636B51285C80D00C4ED47 /* ProjectsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +58,13 @@
 		C96CB94B1285BF1A00609759 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		C96CB94C1285BF1A00609759 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		C96CB94D1285BF1A00609759 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
+		9126353D1285877000C4ED47 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		9126353E1285877000C4ED47 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		9126353F1285877000C4ED47 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		912636581285BE5F00C4ED47 /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
+		912636591285BE5F00C4ED47 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
+		912636B41285C80D00C4ED47 /* ProjectsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectsViewController.h; sourceTree = "<group>"; };
+		912636B51285C80D00C4ED47 /* ProjectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +91,14 @@
 				28042008108E984D000629CD /* RootViewController.m */,
 				28042009108E984D000629CD /* DetailViewController.h */,
 				2804200A108E984D000629CD /* DetailViewController.m */,
+				9126353D1285877000C4ED47 /* LoginViewController.h */,
+				9126353E1285877000C4ED47 /* LoginViewController.m */,
+				9126353F1285877000C4ED47 /* LoginViewController.xib */,
+				912636581285BE5F00C4ED47 /* Project.h */,
+				912636591285BE5F00C4ED47 /* Project.m */,
+				912636B41285C80D00C4ED47 /* ProjectsViewController.h */,
+				912636B51285C80D00C4ED47 /* ProjectsViewController.m */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -97,7 +116,6 @@
 			isa = PBXGroup;
 			children = (
 				080E96DDFE201D6D7F000001 /* Classes */,
-				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -112,6 +130,7 @@
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
@@ -203,6 +222,7 @@
 				C96CB9521285BF1A00609759 /* Icon.png in Resources */,
 				C96CB9531285BF1A00609759 /* Icon@2x.png in Resources */,
 				C96CB9541285BF1A00609759 /* iTunesArtwork.png in Resources */,
+				912635411285877000C4ED47 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +238,9 @@
 				2804200B108E984D000629CD /* RootViewController.m in Sources */,
 				2804200C108E984D000629CD /* DetailViewController.m in Sources */,
 				2819300E112F7FA900ECF9B4 /* PivotPad.xcdatamodeld in Sources */,
+				912635401285877000C4ED47 /* LoginViewController.m in Sources */,
+				9126365A1285BE5F00C4ED47 /* Project.m in Sources */,
+				912636B61285C80D00C4ED47 /* ProjectsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
