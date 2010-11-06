@@ -11,6 +11,15 @@
 
 @interface LoginViewController : UIViewController {
 
+	IBOutlet UITextField *login;
+	IBOutlet UITextField *password;
+	IBOutlet UIButton *button;
+	id delegate;
 }
+
+@property (nonatomic, assign) id delegate;
+
+- (IBAction) login:(id)sender;
+- (void) setParent:(id)parent;
 
 @end

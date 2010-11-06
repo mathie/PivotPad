@@ -7,9 +7,10 @@
 //
 
 #import "LoginViewController.h"
-
+#import "RootViewController.h"
 
 @implementation LoginViewController
+@synthesize delegate;
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -49,6 +50,20 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
+
+- (IBAction) login:(id)sender {
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+	
+	[userDefaults setObject:((UITextField*)login).text forKey:@"username"];
+	[userDefaults setObject:((UITextField*)password).text forKey:@"password"];
+	
+	[(DetailViewController*)delegate doLogin];
+}
+
+- (void) setParent:(id)parent{
+	self.delegate = parent;
+}
+
 
 
 - (void)dealloc {

@@ -8,7 +8,7 @@
 
 #import "DetailViewController.h"
 #import "RootViewController.h"
-
+#import "LoginViewController.h"
 
 @interface DetailViewController ()
 @property (nonatomic, retain) UIPopoverController *popoverController;
@@ -38,7 +38,7 @@
  When setting the detail item, update the view and dismiss the popover controller if it's showing.
  */
 - (void)setDetailItem:(NSManagedObject *)managedObject {
-    
+	
 	if (detailItem != managedObject) {
 		[detailItem release];
 		detailItem = [managedObject retain];
@@ -100,23 +100,28 @@
 #pragma mark -
 #pragma mark View lifecycle
 
-/*
+
  // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
- */
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 }
 */
-/*
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+	
+	// Show login
+	LoginViewController *login = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:[NSBundle mainBundle]];
+	[login setParent:self];
+	login.modalPresentationStyle = UIModalPresentationFormSheet;
+	[self presentModalViewController:login animated:YES];
 }
-*/
+
 /*
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
@@ -156,5 +161,8 @@
 	[super dealloc];
 }	
 
+- (void)doLogin {
+	[self dismissModalViewControllerAnimated:YES];
+}
 
 @end

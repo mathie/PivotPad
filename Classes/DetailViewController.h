@@ -31,4 +31,6 @@
 
 - (IBAction)insertNewObject:(id)sender;
 
+- (void)doLogin;
+
 @end
