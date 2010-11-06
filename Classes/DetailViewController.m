@@ -7,7 +7,7 @@
 //
 
 #import "DetailViewController.h"
-#import "RootViewController.h"
+#import "ProjectsViewController.h"
 #import "LoginViewController.h"
 
 @interface DetailViewController ()
@@ -19,14 +19,14 @@
 
 @implementation DetailViewController
 
-@synthesize toolbar, popoverController, detailItem, detailDescriptionLabel, rootViewController;
+@synthesize toolbar, popoverController, detailItem, detailDescriptionLabel, projectsViewController;
 
 
 #pragma mark -
 #pragma mark Object insertion
 
 - (IBAction)insertNewObject:(id)sender {
-	return;
+	[self.projectsViewController insertNewObject:sender];	
 }
 
 

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
-@class RootViewController;
+@class ProjectsViewController;
 
 @interface DetailViewController : UIViewController <UIPopoverControllerDelegate, UISplitViewControllerDelegate> {
     
@@ -19,7 +19,7 @@
     NSManagedObject *detailItem;
     UILabel *detailDescriptionLabel;
 
-    RootViewController *rootViewController;
+    ProjectsViewController *projectsViewController;
 }
 
 @property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
@@ -27,7 +27,7 @@
 @property (nonatomic, retain) NSManagedObject *detailItem;
 @property (nonatomic, retain) IBOutlet UILabel *detailDescriptionLabel;
 
-@property (nonatomic, assign) IBOutlet RootViewController *rootViewController;
+@property (nonatomic, assign) IBOutlet ProjectsViewController *projectsViewController;
 
 - (IBAction)insertNewObject:(id)sender;
 

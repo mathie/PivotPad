@@ -406,13 +406,13 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>detailDescriptionLabel</string>
-							<string>rootViewController</string>
+							<string>projectsViewController</string>
 							<string>toolbar</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UILabel</string>
-							<string>RootViewController</string>
+							<string>ProjectsViewController</string>
 							<string>UIToolbar</string>
 						</object>
 					</object>
@@ -446,7 +446,7 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">RootViewController</string>
+					<string key="className">ProjectsViewController</string>
 					<string key="superclassName">UITableViewController</string>
 					<object class="NSMutableDictionary" key="actions">
 						<string key="NS.key.0">insertNewObject:</string>
@@ -472,7 +472,7 @@
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Classes/RootViewController.h</string>
+						<string key="minorKey">Classes/ProjectsViewController.h</string>
 					</object>
 				</object>
 			</object>

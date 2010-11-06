@@ -8,13 +8,12 @@
 
 #import "PivotPadAppDelegate.h"
 
-
-#import "RootViewController.h"
 #import "DetailViewController.h"
+#import "ProjectsViewController.h"
 
 @implementation PivotPadAppDelegate
 
-@synthesize window, splitViewController, rootViewController, detailViewController;
+@synthesize window, splitViewController, projectsViewController, detailViewController;
 
 
 #pragma mark -
@@ -22,8 +21,8 @@
 
 
 - (void)awakeFromNib {
-    // Pass the managed object context to the root view controller.
-    rootViewController.managedObjectContext = self.managedObjectContext; 
+    // Pass the managed object context to the project view controller.
+    projectsViewController.managedObjectContext = self.managedObjectContext; 
 }
 
 
@@ -181,7 +180,7 @@
     [persistentStoreCoordinator_ release];
     
 	[splitViewController release];
-	[rootViewController release];
+	[projectsViewController release];
 	[detailViewController release];
 
 	[window release];
