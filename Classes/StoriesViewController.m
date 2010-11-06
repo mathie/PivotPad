@@ -12,6 +12,7 @@
 #import "ASINetworkQueue.h"
 #import "TouchXML.h"
 #import "Project.h"
+#import "DetailViewController.h"
 
 @implementation StoriesViewController
 
@@ -43,6 +44,8 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	self.navigationItem.title = @"Stories";
+	
     [self getStoriesFromPivotal];
 }
 
@@ -96,12 +99,14 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     // Configure the cell...
     Story *s = [stories objectAtIndex:indexPath.row];
 	cell.textLabel.text = s.title;
+	cell.detailTextLabel.text = s.description;
 
     return cell;
 }
@@ -152,19 +157,24 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here. Create and push another view controller.
-    /*
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+    
+    DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailView" bundle:nil];
     // ...
     // Pass the selected object to the new view controller.
     [self.navigationController pushViewController:detailViewController animated:YES];
     [detailViewController release];
-	 */
+	// */
 }
 
 #pragma mark -
 #pragma mark Pivotal requests
 - (void)getStoriesFromPivotal
 {
+	if (project == nil)
+		return;
+	
+	self.navigationItem.title = project.name;
+	
     [[self networkQueue] cancelAllOperations];
     
     [self setNetworkQueue:[ASINetworkQueue queue]];
@@ -195,7 +205,8 @@
     for(CXMLElement * storyNode in storyNodes) {
         NSString *storyId = [[[storyNode elementsForName:@"id"] objectAtIndex:0] stringValue];
         NSString *title = [[[storyNode elementsForName:@"name"] objectAtIndex:0] stringValue];
-        Story *story = [[Story alloc] initWithProject:project andStoryId:storyId andTitle:title];
+		NSString *description = [[[storyNode elementsForName:@"description"] objectAtIndex:0] stringValue];
+        Story *story = [[Story alloc] initWithProject:project andStoryId:storyId andTitle:title andDescription:description];
         [(NSMutableArray *)stories addObject:story];
     }
 

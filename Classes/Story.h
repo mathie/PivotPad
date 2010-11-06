@@ -14,12 +14,14 @@
     Project *project;
 	NSString *storyId;
 	NSString *title;
+	NSString *description;
 }
 
 @property (nonatomic, retain) Project *project;
 @property (nonatomic, retain) NSString *storyId;
 @property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) NSString *description;
 
-- (Story *)initWithProject:(Project *)aProject andStoryId:(NSString *)aStoryId andTitle:(NSString *)aTitle;
+- (Story *)initWithProject:(Project *)aProject andStoryId:(NSString *)aStoryId andTitle:(NSString *)aTitle andDescription:(NSString *)aDescription;
 
 @end

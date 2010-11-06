@@ -148,10 +148,13 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    StoriesViewController *storiesViewController = [[StoriesViewController alloc] initWithStyle:UITableViewStylePlain];
-    storiesViewController.project = [projects objectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:storiesViewController animated:YES];
-    [storiesViewController release];
+//    StoriesViewController *storiesViewController = [[StoriesViewController alloc] initWithStyle:UITableViewStylePlain];
+//    storiesViewController.project = [projects objectAtIndex:indexPath.row];
+//    [self.navigationController pushViewController:storiesViewController animated:YES];
+//    [storiesViewController release];
+	
+	detailViewController.project = [projects objectAtIndex:indexPath.row];
+	[detailViewController getStoriesFromPivotal];
 }
 
 

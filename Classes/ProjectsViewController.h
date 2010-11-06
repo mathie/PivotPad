@@ -9,15 +9,16 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
-@class DetailViewController;
+@class ASINetworkQueue;
+@class StoriesViewController;
 
 @interface ProjectsViewController : UITableViewController {
-    DetailViewController *detailViewController;
+    StoriesViewController *detailViewController;
     NSManagedObjectContext *managedObjectContext;
 	NSArray *projects;
 }
 
-@property (nonatomic, retain) IBOutlet DetailViewController *detailViewController;
+@property (nonatomic, retain) IBOutlet StoriesViewController *detailViewController;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
 @property (nonatomic, retain) NSArray *projects;

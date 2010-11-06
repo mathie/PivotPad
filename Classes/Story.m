@@ -11,13 +11,14 @@
 
 @implementation Story
 
-@synthesize project, storyId, title;
+@synthesize project, storyId, title, description;
 
-- (Story *)initWithProject:(Project *)aProject andStoryId:(NSString *)aStoryId andTitle:(NSString *)aTitle {
+- (Story *)initWithProject:(Project *)aProject andStoryId:(NSString *)aStoryId andTitle:(NSString *)aTitle andDescription:(NSString *)aDescription {
     if(self = [super init]) {
         self.project = aProject;
         self.storyId = aStoryId;
         self.title = aTitle;
+		self.description = aDescription;
     }
     return self;
 }
