@@ -18,10 +18,6 @@
 		2819300E112F7FA900ECF9B4 /* PivotPad.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2819300D112F7FA900ECF9B4 /* PivotPad.xcdatamodeld */; };
 		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
-		912635401285877000C4ED47 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9126353E1285877000C4ED47 /* LoginViewController.m */; };
-		912635411285877000C4ED47 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9126353F1285877000C4ED47 /* LoginViewController.xib */; };
-		9126365A1285BE5F00C4ED47 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 912636591285BE5F00C4ED47 /* Project.m */; };
-		912636B61285C80D00C4ED47 /* ProjectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912636B51285C80D00C4ED47 /* ProjectsViewController.m */; };
 		4B692D221285C88000B9BD82 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B692D131285C88000B9BD82 /* ASIAuthenticationDialog.m */; };
 		4B692D231285C88000B9BD82 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B692D161285C88000B9BD82 /* ASIDownloadCache.m */; };
 		4B692D241285C88000B9BD82 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B692D181285C88000B9BD82 /* ASIFormDataRequest.m */; };
@@ -33,6 +29,10 @@
 		4B692D2E1285C91100B9BD82 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B692D2D1285C91100B9BD82 /* MobileCoreServices.framework */; };
 		4B692D301285C91100B9BD82 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B692D2F1285C91100B9BD82 /* SystemConfiguration.framework */; };
 		4B692D321285C91100B9BD82 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B692D311285C91100B9BD82 /* libz.dylib */; };
+		912635401285877000C4ED47 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9126353E1285877000C4ED47 /* LoginViewController.m */; };
+		912635411285877000C4ED47 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9126353F1285877000C4ED47 /* LoginViewController.xib */; };
+		9126365A1285BE5F00C4ED47 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 912636591285BE5F00C4ED47 /* Project.m */; };
+		912636B61285C80D00C4ED47 /* ProjectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912636B51285C80D00C4ED47 /* ProjectsViewController.m */; };
 		C96CB9201285A1F800609759 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C96CB91F1285A1F800609759 /* Settings.bundle */; };
 		C96CB94E1285BF1A00609759 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = C96CB9471285BF1900609759 /* Icon-72.png */; };
 		C96CB94F1285BF1A00609759 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = C96CB9481285BF1A00609759 /* Icon-Small-50.png */; };
