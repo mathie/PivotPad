@@ -29,6 +29,19 @@
 		4B692D2E1285C91100B9BD82 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B692D2D1285C91100B9BD82 /* MobileCoreServices.framework */; };
 		4B692D301285C91100B9BD82 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B692D2F1285C91100B9BD82 /* SystemConfiguration.framework */; };
 		4B692D321285C91100B9BD82 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B692D311285C91100B9BD82 /* libz.dylib */; };
+		4B692DAC1285D60500B9BD82 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B692DAB1285D60500B9BD82 /* libxml2.dylib */; };
+		4B692DCB1285D77600B9BD82 /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B692DB21285D77600B9BD82 /* CXMLDocument_CreationExtensions.m */; };
+		4B692DCC1285D77600B9BD82 /* CXMLNode_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B692DB41285D77600B9BD82 /* CXMLNode_CreationExtensions.m */; };
+		4B692DCD1285D77600B9BD82 /* CXMLDocument_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B692DB61285D77600B9BD82 /* CXMLDocument_PrivateExtensions.m */; };
+		4B692DCE1285D77600B9BD82 /* CXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B692DB81285D77600B9BD82 /* CXMLDocument.m */; };
+		4B692DCF1285D77600B9BD82 /* CXMLElement_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B692DBA1285D77600B9BD82 /* CXMLElement_CreationExtensions.m */; };
+		4B692DD01285D77600B9BD82 /* CXMLElement_ElementTreeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B692DBC1285D77600B9BD82 /* CXMLElement_ElementTreeExtensions.m */; };
+		4B692DD11285D77600B9BD82 /* CXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B692DBE1285D77600B9BD82 /* CXMLElement.m */; };
+		4B692DD21285D77600B9BD82 /* CXMLNamespaceNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B692DC01285D77600B9BD82 /* CXMLNamespaceNode.m */; };
+		4B692DD31285D77600B9BD82 /* CXMLNode_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B692DC21285D77600B9BD82 /* CXMLNode_PrivateExtensions.m */; };
+		4B692DD41285D77600B9BD82 /* CXMLNode_XPathExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B692DC41285D77600B9BD82 /* CXMLNode_XPathExtensions.m */; };
+		4B692DD51285D77600B9BD82 /* CXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B692DC61285D77600B9BD82 /* CXMLNode.m */; };
+		4B692DD61285D77600B9BD82 /* CTidy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B692DC91285D77600B9BD82 /* CTidy.m */; };
 		912635401285877000C4ED47 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9126353E1285877000C4ED47 /* LoginViewController.m */; };
 		912635411285877000C4ED47 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9126353F1285877000C4ED47 /* LoginViewController.xib */; };
 		9126365A1285BE5F00C4ED47 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 912636591285BE5F00C4ED47 /* Project.m */; };
@@ -82,6 +95,32 @@
 		4B692D2D1285C91100B9BD82 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		4B692D2F1285C91100B9BD82 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4B692D311285C91100B9BD82 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		4B692DAB1285D60500B9BD82 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		4B692DB11285D77600B9BD82 /* CXMLDocument_CreationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLDocument_CreationExtensions.h; sourceTree = "<group>"; };
+		4B692DB21285D77600B9BD82 /* CXMLDocument_CreationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLDocument_CreationExtensions.m; sourceTree = "<group>"; };
+		4B692DB31285D77600B9BD82 /* CXMLNode_CreationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNode_CreationExtensions.h; sourceTree = "<group>"; };
+		4B692DB41285D77600B9BD82 /* CXMLNode_CreationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNode_CreationExtensions.m; sourceTree = "<group>"; };
+		4B692DB51285D77600B9BD82 /* CXMLDocument_PrivateExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLDocument_PrivateExtensions.h; sourceTree = "<group>"; };
+		4B692DB61285D77600B9BD82 /* CXMLDocument_PrivateExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLDocument_PrivateExtensions.m; sourceTree = "<group>"; };
+		4B692DB71285D77600B9BD82 /* CXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLDocument.h; sourceTree = "<group>"; };
+		4B692DB81285D77600B9BD82 /* CXMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLDocument.m; sourceTree = "<group>"; };
+		4B692DB91285D77600B9BD82 /* CXMLElement_CreationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLElement_CreationExtensions.h; sourceTree = "<group>"; };
+		4B692DBA1285D77600B9BD82 /* CXMLElement_CreationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLElement_CreationExtensions.m; sourceTree = "<group>"; };
+		4B692DBB1285D77600B9BD82 /* CXMLElement_ElementTreeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLElement_ElementTreeExtensions.h; sourceTree = "<group>"; };
+		4B692DBC1285D77600B9BD82 /* CXMLElement_ElementTreeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLElement_ElementTreeExtensions.m; sourceTree = "<group>"; };
+		4B692DBD1285D77600B9BD82 /* CXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLElement.h; sourceTree = "<group>"; };
+		4B692DBE1285D77600B9BD82 /* CXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLElement.m; sourceTree = "<group>"; };
+		4B692DBF1285D77600B9BD82 /* CXMLNamespaceNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNamespaceNode.h; sourceTree = "<group>"; };
+		4B692DC01285D77600B9BD82 /* CXMLNamespaceNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNamespaceNode.m; sourceTree = "<group>"; };
+		4B692DC11285D77600B9BD82 /* CXMLNode_PrivateExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNode_PrivateExtensions.h; sourceTree = "<group>"; };
+		4B692DC21285D77600B9BD82 /* CXMLNode_PrivateExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNode_PrivateExtensions.m; sourceTree = "<group>"; };
+		4B692DC31285D77600B9BD82 /* CXMLNode_XPathExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNode_XPathExtensions.h; sourceTree = "<group>"; };
+		4B692DC41285D77600B9BD82 /* CXMLNode_XPathExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNode_XPathExtensions.m; sourceTree = "<group>"; };
+		4B692DC51285D77600B9BD82 /* CXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNode.h; sourceTree = "<group>"; };
+		4B692DC61285D77600B9BD82 /* CXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNode.m; sourceTree = "<group>"; };
+		4B692DC81285D77600B9BD82 /* CTidy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTidy.h; sourceTree = "<group>"; };
+		4B692DC91285D77600B9BD82 /* CTidy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTidy.m; sourceTree = "<group>"; };
+		4B692DCA1285D77600B9BD82 /* TouchXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchXML.h; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* PivotPad-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PivotPad-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		9126353D1285877000C4ED47 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		9126353E1285877000C4ED47 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -113,6 +152,7 @@
 				4B692D2E1285C91100B9BD82 /* MobileCoreServices.framework in Frameworks */,
 				4B692D301285C91100B9BD82 /* SystemConfiguration.framework in Frameworks */,
 				4B692D321285C91100B9BD82 /* libz.dylib in Frameworks */,
+				4B692DAC1285D60500B9BD82 /* libxml2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +240,7 @@
 				4B692D2D1285C91100B9BD82 /* MobileCoreServices.framework */,
 				4B692D2F1285C91100B9BD82 /* SystemConfiguration.framework */,
 				4B692D311285C91100B9BD82 /* libz.dylib */,
+				4B692DAB1285D60500B9BD82 /* libxml2.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -207,6 +248,7 @@
 		4B692D0E1285C81200B9BD82 /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				4B692DAF1285D75E00B9BD82 /* TouchXML */,
 				4B692D0F1285C81D00B9BD82 /* ASIHTTPRequest */,
 			);
 			name = 3rdParty;
@@ -235,6 +277,54 @@
 				4B692D211285C88000B9BD82 /* ASIProgressDelegate.h */,
 			);
 			name = ASIHTTPRequest;
+			sourceTree = "<group>";
+		};
+		4B692DAF1285D75E00B9BD82 /* TouchXML */ = {
+			isa = PBXGroup;
+			children = (
+				4B692DB01285D77600B9BD82 /* Creation */,
+				4B692DB51285D77600B9BD82 /* CXMLDocument_PrivateExtensions.h */,
+				4B692DB61285D77600B9BD82 /* CXMLDocument_PrivateExtensions.m */,
+				4B692DB71285D77600B9BD82 /* CXMLDocument.h */,
+				4B692DB81285D77600B9BD82 /* CXMLDocument.m */,
+				4B692DB91285D77600B9BD82 /* CXMLElement_CreationExtensions.h */,
+				4B692DBA1285D77600B9BD82 /* CXMLElement_CreationExtensions.m */,
+				4B692DBB1285D77600B9BD82 /* CXMLElement_ElementTreeExtensions.h */,
+				4B692DBC1285D77600B9BD82 /* CXMLElement_ElementTreeExtensions.m */,
+				4B692DBD1285D77600B9BD82 /* CXMLElement.h */,
+				4B692DBE1285D77600B9BD82 /* CXMLElement.m */,
+				4B692DBF1285D77600B9BD82 /* CXMLNamespaceNode.h */,
+				4B692DC01285D77600B9BD82 /* CXMLNamespaceNode.m */,
+				4B692DC11285D77600B9BD82 /* CXMLNode_PrivateExtensions.h */,
+				4B692DC21285D77600B9BD82 /* CXMLNode_PrivateExtensions.m */,
+				4B692DC31285D77600B9BD82 /* CXMLNode_XPathExtensions.h */,
+				4B692DC41285D77600B9BD82 /* CXMLNode_XPathExtensions.m */,
+				4B692DC51285D77600B9BD82 /* CXMLNode.h */,
+				4B692DC61285D77600B9BD82 /* CXMLNode.m */,
+				4B692DC71285D77600B9BD82 /* Tidy */,
+				4B692DCA1285D77600B9BD82 /* TouchXML.h */,
+			);
+			name = TouchXML;
+			sourceTree = "<group>";
+		};
+		4B692DB01285D77600B9BD82 /* Creation */ = {
+			isa = PBXGroup;
+			children = (
+				4B692DB11285D77600B9BD82 /* CXMLDocument_CreationExtensions.h */,
+				4B692DB21285D77600B9BD82 /* CXMLDocument_CreationExtensions.m */,
+				4B692DB31285D77600B9BD82 /* CXMLNode_CreationExtensions.h */,
+				4B692DB41285D77600B9BD82 /* CXMLNode_CreationExtensions.m */,
+			);
+			path = Creation;
+			sourceTree = "<group>";
+		};
+		4B692DC71285D77600B9BD82 /* Tidy */ = {
+			isa = PBXGroup;
+			children = (
+				4B692DC81285D77600B9BD82 /* CTidy.h */,
+				4B692DC91285D77600B9BD82 /* CTidy.m */,
+			);
+			path = Tidy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,6 +413,18 @@
 				4B692D261285C88000B9BD82 /* ASIInputStream.m in Sources */,
 				4B692D271285C88000B9BD82 /* ASINetworkQueue.m in Sources */,
 				4B692D2A1285C8C200B9BD82 /* Reachability.m in Sources */,
+				4B692DCB1285D77600B9BD82 /* CXMLDocument_CreationExtensions.m in Sources */,
+				4B692DCC1285D77600B9BD82 /* CXMLNode_CreationExtensions.m in Sources */,
+				4B692DCD1285D77600B9BD82 /* CXMLDocument_PrivateExtensions.m in Sources */,
+				4B692DCE1285D77600B9BD82 /* CXMLDocument.m in Sources */,
+				4B692DCF1285D77600B9BD82 /* CXMLElement_CreationExtensions.m in Sources */,
+				4B692DD01285D77600B9BD82 /* CXMLElement_ElementTreeExtensions.m in Sources */,
+				4B692DD11285D77600B9BD82 /* CXMLElement.m in Sources */,
+				4B692DD21285D77600B9BD82 /* CXMLNamespaceNode.m in Sources */,
+				4B692DD31285D77600B9BD82 /* CXMLNode_PrivateExtensions.m in Sources */,
+				4B692DD41285D77600B9BD82 /* CXMLNode_XPathExtensions.m in Sources */,
+				4B692DD51285D77600B9BD82 /* CXMLNode.m in Sources */,
+				4B692DD61285D77600B9BD82 /* CTidy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +466,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -378,6 +481,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
