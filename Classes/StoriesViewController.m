@@ -14,10 +14,11 @@
 #import "Project.h"
 #import "DetailViewController.h"
 #import "LoginViewController.h"
+//#import "ProjectsViewController.h"
 
 @implementation StoriesViewController
 
-@synthesize stories, project, networkQueue;
+@synthesize stories, project, networkQueue, popoverController, projectsViewController;
 
 #pragma mark -
 #pragma mark Initialization
@@ -234,6 +235,25 @@
     }
     NSLog(@"Queue finished");
 }
+
+#pragma mark -
+#pragma mark Split view support
+
+- (void)splitViewController: (UISplitViewController*)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem*)barButtonItem forPopoverController: (UIPopoverController*)pc {
+    
+	barButtonItem.title = @"Projects";
+	[self.navigationController.navigationBar.topItem setLeftBarButtonItem:barButtonItem animated:YES];
+	self.popoverController = pc;
+}
+
+
+// Called when the view is shown again in the split view, invalidating the button and popover controller.
+- (void)splitViewController: (UISplitViewController*)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem {
+    
+    [self.navigationController.navigationBar.topItem setLeftBarButtonItem:nil animated:YES];
+    self.popoverController = nil;
+}
+
 
 #pragma mark -
 #pragma mark Memory management

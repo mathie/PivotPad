@@ -41,6 +41,11 @@
 - (void)projectsDidFindAll:(NSArray *)allProjects {
     self.projects = allProjects;
     [self.tableView reloadData];
+	
+	NSUInteger indexArr[] = {0,0};
+	[self.tableView selectRowAtIndexPath:[NSIndexPath indexPathWithIndexes:indexArr length:2] animated:YES scrollPosition:UITableViewScrollPositionNone];
+	detailViewController.project = [projects objectAtIndex:0];
+	[detailViewController getStoriesFromPivotal];
 }
 
 /*
