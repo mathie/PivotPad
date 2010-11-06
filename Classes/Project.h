@@ -15,12 +15,14 @@ static id projectDelegate;
 @interface Project : NSObject {
 	NSString *projectId;
 	NSString *name;
+    NSArray *stories;
     ASINetworkQueue *networkQueue;
 }
 
 @property (nonatomic, retain) NSString *projectId;
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) ASINetworkQueue *networkQueue;
+@property (nonatomic, retain) NSArray *stories;
 
 - (Project *)initWithProjectId:(NSString *)aProjectId andName:(NSString *)aName;
 

@@ -22,6 +22,8 @@
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSString *description;
 
++ (void)findAllForProject:(Project *)aProject andTell:(id)delegate;
+
 - (Story *)initWithProject:(Project *)aProject andStoryId:(NSString *)aStoryId andTitle:(NSString *)aTitle andDescription:(NSString *)aDescription;
 
 @end

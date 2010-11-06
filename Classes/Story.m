@@ -13,6 +13,10 @@
 
 @synthesize project, storyId, title, description;
 
++ (void)findAllForProject:(Project *)aProject andTell:(id)delegate {
+}
+
+
 - (Story *)initWithProject:(Project *)aProject andStoryId:(NSString *)aStoryId andTitle:(NSString *)aTitle andDescription:(NSString *)aDescription {
     if(self = [super init]) {
         self.project = aProject;
