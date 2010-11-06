@@ -16,4 +16,6 @@
 @property (nonatomic, retain) NSString *projectId;
 @property (nonatomic, retain) NSString *name;
 
+- (Project *)initWithProjectId:(NSString *)aProjectId andName:(NSString *)aName;
+
 @end

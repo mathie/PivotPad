@@ -13,6 +13,8 @@
 #import "DetailViewController.h"
 #import "ASIHTTPRequest.h"
 #import "ASINetworkQueue.h"
+#import "TouchXML.h"
+#import "Project.h"
 
 @implementation PivotPadAppDelegate
 
@@ -107,6 +109,23 @@
 	NSLog(@"Request %@ finished successfully, received response:", [request url]);
     NSString *responseString = [request responseString];
     NSLog(@"%@", responseString);
+
+    NSData *responseData = [request responseData];
+    CXMLDocument *doc = [[[CXMLDocument alloc] initWithData:responseData options:0 error:nil] autorelease];
+
+    NSMutableArray *projects = [[NSMutableArray alloc] init];
+    NSArray *projectNodes = [doc nodesForXPath:@"//project" error:nil];
+    for(CXMLElement * projectNode in projectNodes) {
+        NSLog(@"Look, ma, a project node: %@", projectNode);
+        NSString *projectId = [[[projectNode elementsForName:@"id"] objectAtIndex:0] stringValue];
+        NSString *name = [[[projectNode elementsForName:@"name"] objectAtIndex:0] stringValue];
+        Project *project = [[Project alloc] initWithProjectId:projectId andName:name];
+        [projects addObject:project];
+    }
+    NSLog(@"Created projects array: %@", projects);
+    for(Project *project in projects) {
+        NSLog(@"Found project id %@ with name %@", [project projectId], project.name);
+    }
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request {
