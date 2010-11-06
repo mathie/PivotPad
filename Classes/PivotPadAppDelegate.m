@@ -11,11 +11,12 @@
 
 #import "RootViewController.h"
 #import "DetailViewController.h"
-
+#import "ASIHTTPRequest.h"
+#import "ASINetworkQueue.h"
 
 @implementation PivotPadAppDelegate
 
-@synthesize window, splitViewController, rootViewController, detailViewController;
+@synthesize window, splitViewController, rootViewController, detailViewController, networkQueue;
 
 
 #pragma mark -
@@ -30,8 +31,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
-    // Override point for customization after app launch.
-    
+    [self doNetworkOperations];
+
 	// Add the split view controller's view to the window and display.
 	[self.window addSubview:splitViewController.view];
     [self.window makeKeyAndVisible];
@@ -75,6 +76,55 @@
     }
 }
 
+#pragma mark -
+#pragma mark HTTP Request management
+
+- (void)doNetworkOperations
+{
+	// Stop anything already in the queue before removing it
+	[[self networkQueue] cancelAllOperations];
+    
+	// Creating a new queue each time we use it means we don't have to worry about clearing delegates or resetting progress tracking
+	[self setNetworkQueue:[ASINetworkQueue queue]];
+	[[self networkQueue] setDelegate:self];
+	[[self networkQueue] setRequestDidFinishSelector:@selector(requestFinished:)];
+	[[self networkQueue] setRequestDidFailSelector:@selector(requestFailed:)];
+	[[self networkQueue] setQueueDidFinishSelector:@selector(queueFinished:)];
+    
+    NSURL *url = [NSURL URLWithString:@"http://fakept.heroku.com/services/v3/projects"];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    [request addRequestHeader:@"X-TrackerToken" value:@"sometokenstring"];
+    [[self networkQueue] addOperation:request];
+    
+	[[self networkQueue] go];
+}
+
+- (void)requestFinished:(ASIHTTPRequest *)request {
+	if ([[self networkQueue] requestsCount] == 0) {
+		[self setNetworkQueue:nil]; 
+	}
+
+	NSLog(@"Request %@ finished successfully, received response:", [request url]);
+    NSString *responseString = [request responseString];
+    NSLog(@"%@", responseString);
+}
+
+- (void)requestFailed:(ASIHTTPRequest *)request {
+	if ([[self networkQueue] requestsCount] == 0) {
+		[self setNetworkQueue:nil]; 
+	}
+
+    NSError *error = [request error];
+    NSLog(@"Request %@ failed: %@", [request url], error);
+}
+
+- (void)queueFinished:(ASINetworkQueue *)queue
+{
+	if ([[self networkQueue] requestsCount] == 0) {
+		[self setNetworkQueue:nil]; 
+	}
+	NSLog(@"Queue finished");
+}
 
 #pragma mark -
 #pragma mark Core Data stack
@@ -181,6 +231,7 @@
 
 
 - (void)dealloc {
+    [networkQueue release];
 
     [managedObjectContext_ release];
     [managedObjectModel_ release];
