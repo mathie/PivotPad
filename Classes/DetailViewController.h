@@ -29,8 +29,6 @@
 
 @property (nonatomic, assign) IBOutlet ProjectsViewController *projectsViewController;
 
-- (IBAction)insertNewObject:(id)sender;
-
 - (void)doLogin;
 
 @end
