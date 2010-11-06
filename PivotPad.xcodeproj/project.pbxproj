@@ -41,6 +41,7 @@
 		4B692DD41285D77600B9BD82 /* CXMLNode_XPathExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B692DC41285D77600B9BD82 /* CXMLNode_XPathExtensions.m */; };
 		4B692DD51285D77600B9BD82 /* CXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B692DC61285D77600B9BD82 /* CXMLNode.m */; };
 		4B692DD61285D77600B9BD82 /* CTidy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B692DC91285D77600B9BD82 /* CTidy.m */; };
+		4B692E9F1285EE0700B9BD82 /* StoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B692E9E1285EE0700B9BD82 /* StoriesViewController.m */; };
 		912635401285877000C4ED47 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9126353E1285877000C4ED47 /* LoginViewController.m */; };
 		912635411285877000C4ED47 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9126353F1285877000C4ED47 /* LoginViewController.xib */; };
 		9126365A1285BE5F00C4ED47 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 912636591285BE5F00C4ED47 /* Project.m */; };
@@ -118,6 +119,8 @@
 		4B692DC81285D77600B9BD82 /* CTidy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTidy.h; sourceTree = "<group>"; };
 		4B692DC91285D77600B9BD82 /* CTidy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTidy.m; sourceTree = "<group>"; };
 		4B692DCA1285D77600B9BD82 /* TouchXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchXML.h; sourceTree = "<group>"; };
+		4B692E9D1285EE0700B9BD82 /* StoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoriesViewController.h; sourceTree = "<group>"; };
+		4B692E9E1285EE0700B9BD82 /* StoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoriesViewController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* PivotPad-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PivotPad-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		9126353D1285877000C4ED47 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		9126353E1285877000C4ED47 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -159,6 +162,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4B692E9D1285EE0700B9BD82 /* StoriesViewController.h */,
+				4B692E9E1285EE0700B9BD82 /* StoriesViewController.m */,
 				1D3623240D0F684500981E51 /* PivotPadAppDelegate.h */,
 				1D3623250D0F684500981E51 /* PivotPadAppDelegate.m */,
 				28042009108E984D000629CD /* DetailViewController.h */,
@@ -419,6 +424,7 @@
 				4B692DD41285D77600B9BD82 /* CXMLNode_XPathExtensions.m in Sources */,
 				4B692DD51285D77600B9BD82 /* CXMLNode.m in Sources */,
 				4B692DD61285D77600B9BD82 /* CTidy.m in Sources */,
+				4B692E9F1285EE0700B9BD82 /* StoriesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

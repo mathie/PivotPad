@@ -1,20 +1,17 @@
 //
-//  ProjectsViewController.m
+//  StoriesViewController.m
 //  PivotPad
 //
-//  Created by Mihai Anca on 06/11/2010.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Created by Graeme Mathieson on 06/11/2010.
+//  Copyright 2010 FreeAgent Central. All rights reserved.
 //
 
-#import "ProjectsViewController.h"
-#import "Project.h"
-#import "ASIHTTPRequest.h"
-#import "ASINetworkQueue.h"
-#import "TouchXML.h"
 #import "StoriesViewController.h"
 
-@implementation ProjectsViewController
-@synthesize detailViewController, managedObjectContext, projects, networkQueue;
+
+@implementation StoriesViewController
+
+@synthesize stories;
 
 #pragma mark -
 #pragma mark Initialization
@@ -34,9 +31,9 @@
 #pragma mark -
 #pragma mark View lifecycle
 
+/*
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self getProjectsFromPivotal];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -44,6 +41,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+*/
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
@@ -84,7 +82,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [projects count];
+    return [stories count];
 }
 
 
@@ -99,9 +97,7 @@
     }
     
     // Configure the cell...
-    Project *p = [projects objectAtIndex:indexPath.row];
-	cell.textLabel.text = p.name;
-	
+    
     return cell;
 }
 
@@ -145,81 +141,19 @@
 }
 */
 
-#pragma mark -
-#pragma mark Pivotal requests
-- (void)getProjectsFromPivotal
-{
-  [[self networkQueue] cancelAllOperations];
-
-  [self setNetworkQueue:[ASINetworkQueue queue]];
-  [[self networkQueue] setDelegate:self];
-  [[self networkQueue] setRequestDidFinishSelector:@selector(requestFinished:)];
-  [[self networkQueue] setRequestDidFailSelector:@selector(requestFailed:)];
-  [[self networkQueue] setQueueDidFinishSelector:@selector(queueFinished:)];
-
-  NSURL *url = [NSURL URLWithString:@"https://www.pivotaltracker.com/services/v3/projects"];
-  ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-	
-  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-  [request addRequestHeader:@"X-TrackerToken" value:[userDefaults objectForKey:@"token"]];
-  [[self networkQueue] addOperation:request];
-
-  [[self networkQueue] go];
-}
-
-- (void)requestFinished:(ASIHTTPRequest *)request {
-  if ([[self networkQueue] requestsCount] == 0) {
-    [self setNetworkQueue:nil]; 
-  }
-
-  NSLog(@"Request %@ finished successfully, received response:", [request url]);
-  NSString *responseString = [request responseString];
-  NSLog(@"%@", responseString);
-
-  NSData *responseData = [request responseData];
-  CXMLDocument *doc = [[[CXMLDocument alloc] initWithData:responseData options:0 error:nil] autorelease];
-
-  self.projects = [[NSMutableArray alloc] init];
-  NSArray *projectNodes = [doc nodesForXPath:@"//project" error:nil];
-  for(CXMLElement * projectNode in projectNodes) {
-    NSLog(@"Look, ma, a project node: %@", projectNode);
-    NSString *projectId = [[[projectNode elementsForName:@"id"] objectAtIndex:0] stringValue];
-    NSString *name = [[[projectNode elementsForName:@"name"] objectAtIndex:0] stringValue];
-    Project *project = [[Project alloc] initWithProjectId:projectId andName:name];
-    [(NSMutableArray *)projects addObject:project];
-  }
-  NSLog(@"Created projects array: %@", projects);
-  for(Project *project in projects) {
-    NSLog(@"Found project id %@ with name %@", [project projectId], project.name);
-  }
-	
-	[self.tableView reloadData];
-}
-
-- (void)requestFailed:(ASIHTTPRequest *)request {
-  if ([[self networkQueue] requestsCount] == 0) {
-    [self setNetworkQueue:nil]; 
-  }
-
-  NSError *error = [request error];
-  NSLog(@"Request %@ failed: %@", [request url], error);
-}
-
-- (void)queueFinished:(ASINetworkQueue *)queue
-{
-  if ([[self networkQueue] requestsCount] == 0) {
-    [self setNetworkQueue:nil]; 
-  }
-  NSLog(@"Queue finished");
-}
 
 #pragma mark -
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    StoriesViewController *storiesViewController = [[StoriesViewController alloc] initWithStyle:UITableViewStylePlain];
-    [self.navigationController pushViewController:storiesViewController animated:YES];
-    [storiesViewController release];
+    // Navigation logic may go here. Create and push another view controller.
+    /*
+    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+    // ...
+    // Pass the selected object to the new view controller.
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    [detailViewController release];
+	 */
 }
 
 
@@ -240,8 +174,6 @@
 
 
 - (void)dealloc {
-    [networkQueue release];
-	[projects dealloc];
     [super dealloc];
 }
 
