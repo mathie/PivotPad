@@ -26,8 +26,7 @@
 #pragma mark Object insertion
 
 - (IBAction)insertNewObject:(id)sender {
-	
-	[self.rootViewController insertNewObject:sender];	
+	return;
 }
 
 
@@ -115,11 +114,15 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 	
-	// Show login
-	LoginViewController *login = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:[NSBundle mainBundle]];
-	[login setParent:self];
-	login.modalPresentationStyle = UIModalPresentationFormSheet;
-	[self presentModalViewController:login animated:YES];
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+	NSString *token = [userDefaults objectForKey:@"token"];
+	if (token == nil || [token length] == 0) {
+		// Show login
+		LoginViewController *login = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:[NSBundle mainBundle]];
+		[login setParent:self];
+		login.modalPresentationStyle = UIModalPresentationFormSheet;
+		[self presentModalViewController:login animated:YES];		
+	}
 }
 
 /*

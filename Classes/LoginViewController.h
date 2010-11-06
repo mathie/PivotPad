@@ -14,6 +14,7 @@
 	IBOutlet UITextField *login;
 	IBOutlet UITextField *password;
 	IBOutlet UIButton *button;
+	IBOutlet UIActivityIndicatorView *indicator;
 	id delegate;
 }
 

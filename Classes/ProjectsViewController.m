@@ -156,9 +156,11 @@
   [[self networkQueue] setRequestDidFailSelector:@selector(requestFailed:)];
   [[self networkQueue] setQueueDidFinishSelector:@selector(queueFinished:)];
 
-  NSURL *url = [NSURL URLWithString:@"http://fakept.heroku.com/services/v3/projects"];
+  NSURL *url = [NSURL URLWithString:@"https://www.pivotaltracker.com/services/v3/projects"];
   ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-  [request addRequestHeader:@"X-TrackerToken" value:@"sometokenstring"];
+	
+  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+  [request addRequestHeader:@"X-TrackerToken" value:[userDefaults objectForKey:@"token"]];
   [[self networkQueue] addOperation:request];
 
   [[self networkQueue] go];
@@ -189,6 +191,8 @@
   for(Project *project in projects) {
     NSLog(@"Found project id %@ with name %@", [project projectId], project.name);
   }
+	
+	[self.tableView reloadData];
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request {

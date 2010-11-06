@@ -8,6 +8,8 @@
 
 #import "LoginViewController.h"
 #import "RootViewController.h"
+#import "ASIHTTPRequest.h"
+#import "CXMLDocument.h"
 
 @implementation LoginViewController
 @synthesize delegate;
@@ -52,12 +54,40 @@
 }
 
 - (IBAction) login:(id)sender {
+	
+	button.hidden = YES;
+	indicator.hidden = NO;
+	
+	//[userDefaults setObject:((UITextField*)login).text forKey:@"username"];
+	//[userDefaults setObject:((UITextField*)password).text forKey:@"password"];
+	
+	NSURL *url = [NSURL URLWithString:@"https://www.pivotaltracker.com/services/v3/tokens/active"];
+	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+	[request setUsername:login.text]; //@"mathie+pivotpad@woss.name"];
+	[request setPassword:password.text]; //@"iev7Quah"];
+	[request setDelegate:self];
+	[request startAsynchronous];
+}
+
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
+	
+	NSData *responseData = [request responseData];
+	CXMLDocument *doc = [[[CXMLDocument alloc] initWithData:responseData options:0 error:nil] autorelease];
+	
+	NSArray *nodes = [doc nodesForXPath:@"//guid" error:nil];
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+	[userDefaults setObject:[[nodes objectAtIndex:0] stringValue] forKey:@"token"];
 	
-	[userDefaults setObject:((UITextField*)login).text forKey:@"username"];
-	[userDefaults setObject:((UITextField*)password).text forKey:@"password"];
-	
+	button.hidden = NO;
+	indicator.hidden = YES;
 	[(DetailViewController*)delegate doLogin];
+}
+
+- (void)requestFailed:(ASIHTTPRequest *)request
+{
+	button.hidden = NO;
+	indicator.hidden = YES;
 }
 
 - (void) setParent:(id)parent{
