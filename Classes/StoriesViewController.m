@@ -7,11 +7,15 @@
 //
 
 #import "StoriesViewController.h"
-
+#import "Story.h"
+#import "ASIHTTPRequest.h"
+#import "ASINetworkQueue.h"
+#import "TouchXML.h"
+#import "Project.h"
 
 @implementation StoriesViewController
 
-@synthesize stories;
+@synthesize stories, project, networkQueue;
 
 #pragma mark -
 #pragma mark Initialization
@@ -31,7 +35,6 @@
 #pragma mark -
 #pragma mark View lifecycle
 
-/*
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -40,8 +43,8 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self getStoriesFromPivotal];
 }
-*/
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
@@ -89,7 +92,7 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"Story";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -97,7 +100,9 @@
     }
     
     // Configure the cell...
-    
+    Story *s = [stories objectAtIndex:indexPath.row];
+	cell.textLabel.text = s.title;
+
     return cell;
 }
 
@@ -156,6 +161,63 @@
 	 */
 }
 
+#pragma mark -
+#pragma mark Pivotal requests
+- (void)getStoriesFromPivotal
+{
+    [[self networkQueue] cancelAllOperations];
+    
+    [self setNetworkQueue:[ASINetworkQueue queue]];
+    [[self networkQueue] setDelegate:self];
+    [[self networkQueue] setRequestDidFinishSelector:@selector(requestFinished:)];
+    [[self networkQueue] setRequestDidFailSelector:@selector(requestFailed:)];
+    [[self networkQueue] setQueueDidFinishSelector:@selector(queueFinished:)];
+    NSString *urlString = [NSString stringWithFormat:@"http://fakept.heroku.com/services/v3/projects/%@/stories", [project projectId]];
+    NSLog(@"Generated URL: %@", urlString);
+    NSURL *url = [NSURL URLWithString:urlString];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    [request addRequestHeader:@"X-TrackerToken" value:@"sometokenstring"];
+    [[self networkQueue] addOperation:request];
+    
+    [[self networkQueue] go];
+}
+
+- (void)requestFinished:(ASIHTTPRequest *)request {
+    if ([[self networkQueue] requestsCount] == 0) {
+        [self setNetworkQueue:nil]; 
+    }
+
+    NSData *responseData = [request responseData];
+    CXMLDocument *doc = [[[CXMLDocument alloc] initWithData:responseData options:0 error:nil] autorelease];
+    
+    self.stories = [[NSMutableArray alloc] init];
+    NSArray *storyNodes = [doc nodesForXPath:@"//story" error:nil];
+    for(CXMLElement * storyNode in storyNodes) {
+        NSString *storyId = [[[storyNode elementsForName:@"id"] objectAtIndex:0] stringValue];
+        NSString *title = [[[storyNode elementsForName:@"name"] objectAtIndex:0] stringValue];
+        Story *story = [[Story alloc] initWithProject:project andStoryId:storyId andTitle:title];
+        [(NSMutableArray *)stories addObject:story];
+    }
+
+    [self.tableView reloadData];
+}
+
+- (void)requestFailed:(ASIHTTPRequest *)request {
+    if ([[self networkQueue] requestsCount] == 0) {
+        [self setNetworkQueue:nil]; 
+    }
+    
+    NSError *error = [request error];
+    NSLog(@"Request %@ failed: %@", [request url], error);
+}
+
+- (void)queueFinished:(ASINetworkQueue *)queue
+{
+    if ([[self networkQueue] requestsCount] == 0) {
+        [self setNetworkQueue:nil]; 
+    }
+    NSLog(@"Queue finished");
+}
 
 #pragma mark -
 #pragma mark Memory management

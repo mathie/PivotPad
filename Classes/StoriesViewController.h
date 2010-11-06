@@ -8,11 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+@class Project;
+@class ASINetworkQueue;
 
 @interface StoriesViewController : UITableViewController {
 	NSArray *stories;
+    Project *project;
+    ASINetworkQueue *networkQueue;
 }
 
 @property (nonatomic, retain) NSArray *stories;
+@property (nonatomic, retain) Project *project;
+
+@property (nonatomic, retain) ASINetworkQueue *networkQueue;
+
+- (void)getStoriesFromPivotal;
 
 @end

@@ -91,11 +91,12 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"Project";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     // Configure the cell...
@@ -188,12 +189,7 @@
     Project *project = [[Project alloc] initWithProjectId:projectId andName:name];
     [(NSMutableArray *)projects addObject:project];
   }
-  NSLog(@"Created projects array: %@", projects);
-  for(Project *project in projects) {
-    NSLog(@"Found project id %@ with name %@", [project projectId], project.name);
-  }
-	
-	[self.tableView reloadData];
+  [self.tableView reloadData];
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request {
@@ -218,6 +214,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     StoriesViewController *storiesViewController = [[StoriesViewController alloc] initWithStyle:UITableViewStylePlain];
+    storiesViewController.project = [projects objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:storiesViewController animated:YES];
     [storiesViewController release];
 }
