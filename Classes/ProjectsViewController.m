@@ -8,13 +8,10 @@
 
 #import "ProjectsViewController.h"
 #import "Project.h"
-#import "ASIHTTPRequest.h"
-#import "ASINetworkQueue.h"
-#import "TouchXML.h"
 #import "StoriesViewController.h"
 
 @implementation ProjectsViewController
-@synthesize detailViewController, managedObjectContext, projects, networkQueue;
+@synthesize detailViewController, managedObjectContext, projects;
 
 #pragma mark -
 #pragma mark Initialization
@@ -36,15 +33,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self getProjectsFromPivotal];
+    [Project findAllAndTell:self];
 	
 	self.navigationItem.title = @"Projects";
+}
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+- (void)projectsDidFindAll:(NSArray *)allProjects {
+    self.projects = allProjects;
+    [self.tableView reloadData];
 }
 
 /*
@@ -149,72 +145,6 @@
 */
 
 #pragma mark -
-#pragma mark Pivotal requests
-- (void)getProjectsFromPivotal
-{
-    [[self networkQueue] cancelAllOperations];
-
-    [self setNetworkQueue:[ASINetworkQueue queue]];
-    [[self networkQueue] setDelegate:self];
-    [[self networkQueue] setRequestDidFinishSelector:@selector(requestFinished:)];
-    [[self networkQueue] setRequestDidFailSelector:@selector(requestFailed:)];
-    [[self networkQueue] setQueueDidFinishSelector:@selector(queueFinished:)];
-
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *token = [userDefaults objectForKey:@"token"];
-    if(token != nil) {
-        NSURL *url = [NSURL URLWithString:@"https://www.pivotaltracker.com/services/v3/projects"];
-        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-
-        [request addRequestHeader:@"X-TrackerToken" value:token];
-        [[self networkQueue] addOperation:request];
-
-        [[self networkQueue] go];
-    }
-}
-
-- (void)requestFinished:(ASIHTTPRequest *)request {
-  if ([[self networkQueue] requestsCount] == 0) {
-    [self setNetworkQueue:nil]; 
-  }
-
-  NSLog(@"Request %@ finished successfully, received response:", [request url]);
-  NSString *responseString = [request responseString];
-  NSLog(@"%@", responseString);
-
-  NSData *responseData = [request responseData];
-  CXMLDocument *doc = [[[CXMLDocument alloc] initWithData:responseData options:0 error:nil] autorelease];
-
-  self.projects = [[NSMutableArray alloc] init];
-  NSArray *projectNodes = [doc nodesForXPath:@"//project" error:nil];
-  for(CXMLElement * projectNode in projectNodes) {
-    NSLog(@"Look, ma, a project node: %@", projectNode);
-    NSString *projectId = [[[projectNode elementsForName:@"id"] objectAtIndex:0] stringValue];
-    NSString *name = [[[projectNode elementsForName:@"name"] objectAtIndex:0] stringValue];
-    Project *project = [[Project alloc] initWithProjectId:projectId andName:name];
-    [(NSMutableArray *)projects addObject:project];
-  }
-  [self.tableView reloadData];
-}
-
-- (void)requestFailed:(ASIHTTPRequest *)request {
-  if ([[self networkQueue] requestsCount] == 0) {
-    [self setNetworkQueue:nil]; 
-  }
-
-  NSError *error = [request error];
-  NSLog(@"Request %@ failed: %@", [request url], error);
-}
-
-- (void)queueFinished:(ASINetworkQueue *)queue
-{
-  if ([[self networkQueue] requestsCount] == 0) {
-    [self setNetworkQueue:nil]; 
-  }
-  NSLog(@"Queue finished");
-}
-
-#pragma mark -
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -242,7 +172,6 @@
 
 
 - (void)dealloc {
-    [networkQueue release];
 	[projects dealloc];
     [super dealloc];
 }
