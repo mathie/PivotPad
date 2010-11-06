@@ -37,6 +37,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self getProjectsFromPivotal];
+	
+	self.navigationItem.title = @"Projects";
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
