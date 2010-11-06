@@ -18,6 +18,10 @@
 		2819300E112F7FA900ECF9B4 /* PivotPad.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2819300D112F7FA900ECF9B4 /* PivotPad.xcdatamodeld */; };
 		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
+		912635401285877000C4ED47 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9126353E1285877000C4ED47 /* LoginViewController.m */; };
+		912635411285877000C4ED47 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9126353F1285877000C4ED47 /* LoginViewController.xib */; };
+		9126365A1285BE5F00C4ED47 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 912636591285BE5F00C4ED47 /* Project.m */; };
+		912636B61285C80D00C4ED47 /* ProjectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912636B51285C80D00C4ED47 /* ProjectsViewController.m */; };
 		C96CB9201285A1F800609759 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C96CB91F1285A1F800609759 /* Settings.bundle */; };
 		C96CB94E1285BF1A00609759 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = C96CB9471285BF1900609759 /* Icon-72.png */; };
 		C96CB94F1285BF1A00609759 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = C96CB9481285BF1A00609759 /* Icon-Small-50.png */; };
@@ -26,10 +30,6 @@
 		C96CB9521285BF1A00609759 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C96CB94B1285BF1A00609759 /* Icon.png */; };
 		C96CB9531285BF1A00609759 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C96CB94C1285BF1A00609759 /* Icon@2x.png */; };
 		C96CB9541285BF1A00609759 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = C96CB94D1285BF1A00609759 /* iTunesArtwork.png */; };
-		912635401285877000C4ED47 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9126353E1285877000C4ED47 /* LoginViewController.m */; };
-		912635411285877000C4ED47 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9126353F1285877000C4ED47 /* LoginViewController.xib */; };
-		9126365A1285BE5F00C4ED47 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 912636591285BE5F00C4ED47 /* Project.m */; };
-		912636B61285C80D00C4ED47 /* ProjectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912636B51285C80D00C4ED47 /* ProjectsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +50,13 @@
 		28AD735F0D9D9599002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* PivotPad-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PivotPad-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		9126353D1285877000C4ED47 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		9126353E1285877000C4ED47 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		9126353F1285877000C4ED47 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		912636581285BE5F00C4ED47 /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
+		912636591285BE5F00C4ED47 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
+		912636B41285C80D00C4ED47 /* ProjectsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectsViewController.h; sourceTree = "<group>"; };
+		912636B51285C80D00C4ED47 /* ProjectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectsViewController.m; sourceTree = "<group>"; };
 		C96CB91F1285A1F800609759 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		C96CB9471285BF1900609759 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		C96CB9481285BF1A00609759 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
@@ -58,13 +65,6 @@
 		C96CB94B1285BF1A00609759 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		C96CB94C1285BF1A00609759 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		C96CB94D1285BF1A00609759 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
-		9126353D1285877000C4ED47 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		9126353E1285877000C4ED47 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		9126353F1285877000C4ED47 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		912636581285BE5F00C4ED47 /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
-		912636591285BE5F00C4ED47 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
-		912636B41285C80D00C4ED47 /* ProjectsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectsViewController.h; sourceTree = "<group>"; };
-		912636B51285C80D00C4ED47 /* ProjectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

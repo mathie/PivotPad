@@ -7,10 +7,10 @@
 //
 
 #import "ProjectsViewController.h"
-
+#import "Project.h"
 
 @implementation ProjectsViewController
-
+@synthesize projects;
 
 #pragma mark -
 #pragma mark Initialization
@@ -96,7 +96,7 @@
     }
     
     // Configure the cell...
-    Project *p = [projects objectAtIndex:[indexPath.row]];
+    Project *p = [projects objectAtIndex:indexPath.row];
 	cell.textLabel.text = p.name;
 	
     return cell;
