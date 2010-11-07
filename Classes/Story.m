@@ -11,7 +11,7 @@
 
 @implementation Story
 
-@synthesize project, storyId, title, description, type, deadline, estimate, labels, reporter, created, owner, tasks, comments;
+@synthesize project, storyId, title, description, storyType, estimate, labels, requestedBy, createdAt, updatedAt, acceptedAt, ownedBy, tasks, comments;
 
 + (void)findAllForProject:(Project *)aProject andTell:(id)delegate {
 }

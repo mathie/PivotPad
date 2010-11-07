@@ -15,30 +15,32 @@
 	NSString *storyId;
 	NSString *title;
 	NSString *description;
-	NSString *type;
-	NSDate *deadline;
-	NSInteger *estimate;
-	NSArray *labels;
-	NSString *reporter;
-	NSDate *created;
-	NSString *owner;
-	NSArray *tasks;
-	NSArray *comments;
+	NSString *storyType;
+	NSString *estimate;
+	NSString *labels;
+	NSString *requestedBy;
+	NSString *createdAt;
+	NSString *updatedAt;
+	NSString *acceptedAt;
+	NSString *ownedBy;
+	NSString *tasks;
+	NSString *comments;
 }
 
 @property (nonatomic, retain) Project *project;
 @property (nonatomic, retain) NSString *storyId;
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSString *description;
-@property (nonatomic, retain) NSString *type;
-@property (nonatomic, retain) NSDate *deadline;
-@property NSInteger *estimate;
-@property (nonatomic, retain) NSArray *labels;
-@property (nonatomic, retain) NSString *reporter;
-@property (nonatomic, retain) NSDate *created;
-@property (nonatomic, retain) NSString *owner;
-@property (nonatomic, retain) NSArray *tasks;
-@property (nonatomic, retain) NSArray *comments;
+@property (nonatomic, retain) NSString *storyType;
+@property (nonatomic, retain) NSString *estimate;
+@property (nonatomic, retain) NSString *labels;
+@property (nonatomic, retain) NSString *requestedBy;
+@property (nonatomic, retain) NSString *createdAt;
+@property (nonatomic, retain) NSString *updatedAt;
+@property (nonatomic, retain) NSString *acceptedAt;
+@property (nonatomic, retain) NSString *ownedBy;
+@property (nonatomic, retain) NSString *tasks;
+@property (nonatomic, retain) NSString *comments;
 
 + (void)findAllForProject:(Project *)aProject andTell:(id)delegate;
 

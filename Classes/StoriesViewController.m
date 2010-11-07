@@ -126,16 +126,16 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		
-		if ([s.type isEqualToString:@"feature"]) {
+		if ([s.storyType isEqualToString:@"feature"]) {
 			cell.imageView.image = [UIImage imageNamed:@"feature_icon.png"];
 		}
-		else if ([s.type isEqualToString:@"bug"]) {
+		else if ([s.storyType isEqualToString:@"bug"]) {
 			cell.imageView.image = [UIImage imageNamed:@"bug_icon.png"];
 		}
-		else if ([s.type isEqualToString:@"chore"]) {
+		else if ([s.storyType isEqualToString:@"chore"]) {
 			cell.imageView.image = [UIImage imageNamed:@"chore_icon.png"];
 		}
-		else if ([s.type isEqualToString:@"release"]) {
+		else if ([s.storyType isEqualToString:@"release"]) {
 			cell.imageView.image = [UIImage imageNamed:@"release_icon.png"];
 		}
     }
@@ -281,9 +281,37 @@
         NSString *title = [[[storyNode elementsForName:@"name"] objectAtIndex:0] stringValue];
 		NSString *description = [[[storyNode elementsForName:@"description"] objectAtIndex:0] stringValue];
         Story *story = [[Story alloc] initWithProject:project andStoryId:storyId andTitle:title andDescription:description];
-		story.type = [[[storyNode elementsForName:@"story_type"] objectAtIndex:0] stringValue];
-		//story.estimate = [[[storyNode elementsForName:@"estimate"] objectAtIndex:0] intValue];
-		story.reporter = [[[storyNode elementsForName:@"requested_by"] objectAtIndex:0] stringValue];
+		story.storyType = [[[storyNode elementsForName:@"story_type"] objectAtIndex:0] stringValue];
+		
+		//the following set are optional, or potentially optional
+        NSArray *estimateEls = [storyNode elementsForName:@"estimate"];
+		if ([estimateEls count]>0) {
+			story.estimate = [[estimateEls objectAtIndex:0] stringValue];
+		}
+		
+		NSArray *labelEls = [storyNode elementsForName:@"labels"];
+		if ([labelEls count]>0) {
+			story.labels = [[labelEls objectAtIndex:0] stringValue];
+		}
+		
+		NSArray *requestedEls = [storyNode elementsForName:@"requested_by"];
+		if ([requestedEls count]>0) {
+			story.requestedBy = [[requestedEls objectAtIndex:0] stringValue];
+		}
+		
+		NSArray *acceptedEls = [storyNode elementsForName:@"accepted_at"];
+		if ([acceptedEls count]>0) {
+			story.acceptedAt = [[acceptedEls objectAtIndex:0] stringValue];
+		}
+		
+		NSArray *ownedEls = [storyNode elementsForName:@"owned_by"];
+		if ([ownedEls count]>0) {
+			story.ownedBy = [[ownedEls objectAtIndex:0] stringValue];
+		}
+		
+		story.createdAt = [[[storyNode elementsForName:@"created_at"] objectAtIndex:0] stringValue];
+		story.updatedAt = [[[storyNode elementsForName:@"updated_at"] objectAtIndex:0] stringValue];
+		
         [stories addObject:story];
     }
 
