@@ -39,5 +39,6 @@
 - (IBAction)filterChanged:(id)sender;
 
 - (void)doLogin;
+- (IBAction)signout:(id)sender;
 
 @end

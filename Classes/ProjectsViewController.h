@@ -24,5 +24,6 @@
 @property (nonatomic, retain) NSArray *projects;
 
 - (IBAction)refresh:(id)sender;
+- (IBAction)signout:(id)sender;
 
 @end

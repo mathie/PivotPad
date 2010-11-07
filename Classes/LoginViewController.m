@@ -11,6 +11,7 @@
 #import "ProjectsViewController.h"
 #import "ASIHTTPRequest.h"
 #import "CXMLDocument.h"
+#import "StoriesViewController.h"
 
 @implementation LoginViewController
 @synthesize delegate;

@@ -37,9 +37,10 @@
 
 	
 	UIBarButtonItem *item = [[[UIBarButtonItem alloc] initWithCustomView:segmented] autorelease];
-	UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+	UIBarButtonItem *space = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
+	UIBarButtonItem *space2 = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
 	[self.navigationController setToolbarHidden:NO];
-	self.toolbarItems = [NSArray arrayWithObjects:space, item, space, nil]; // [NSArray arrayWithObjects:item, nil];
+	self.toolbarItems = [NSArray arrayWithObjects:space, item, space2, nil];
 	[segmented release];
 }
 
@@ -155,6 +156,21 @@
 	UISegmentedControl *segmented = (UISegmentedControl *)sender;
 	filter = segmented.selectedSegmentIndex;
 	[self getStoriesFromPivotal];
+}
+
+- (IBAction)signout:(id)sender {
+	[self.stories removeAllObjects];
+	[self.tableView reloadData];
+	
+	[self.navigationController popToRootViewControllerAnimated:YES];
+	
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+	[userDefaults removeObjectForKey:@"token"];
+	// Show login
+	LoginViewController *login = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:[NSBundle mainBundle]];
+	[login setParent:self];
+	login.modalPresentationStyle = UIModalPresentationFormSheet;
+	[self presentModalViewController:login animated:YES];	
 }
 
 - (void)getStoriesFromPivotal

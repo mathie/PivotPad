@@ -52,13 +52,21 @@
 	[Project findAllAndTell:self];
 }
 
+- (IBAction)signout:(id)sender {
+	projects = [[NSArray alloc] init];
+	[self.tableView reloadData];
+	
+	[detailViewController signout:sender];
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 	
 	[self.navigationController setToolbarHidden:NO];
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refresh:)];
-	self.toolbarItems = [NSArray arrayWithObjects:item, nil];
+	UIBarButtonItem *space = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
+	UIBarButtonItem *signout = [[UIBarButtonItem alloc] initWithTitle:@"Signout" style:UIBarButtonItemStyleBordered target:self action:@selector(signout:)];
+	self.toolbarItems = [NSArray arrayWithObjects:item, space, signout, nil];
 	[item release];
 }
 //*/
