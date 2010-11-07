@@ -119,14 +119,27 @@
     static NSString *CellIdentifier = @"Story";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
+    
+	// Configure the cell...
+    Story *s = [stories objectAtIndex:indexPath.row];
+	if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		cell.imageView.image = [UIImage imageNamed:@"feature_icon.png"];
+		
+		if ([s.type isEqualToString:@"feature"]) {
+			cell.imageView.image = [UIImage imageNamed:@"feature_icon.png"];
+		}
+		else if ([s.type isEqualToString:@"bug"]) {
+			cell.imageView.image = [UIImage imageNamed:@"bug_icon.png"];
+		}
+		else if ([s.type isEqualToString:@"chore"]) {
+			cell.imageView.image = [UIImage imageNamed:@"chore_icon.png"];
+		}
+		else if ([s.type isEqualToString:@"release"]) {
+			cell.imageView.image = [UIImage imageNamed:@"release_icon.png"];
+		}
     }
     
-    // Configure the cell...
-    Story *s = [stories objectAtIndex:indexPath.row];
 	cell.textLabel.text = s.title;
 	cell.detailTextLabel.text = s.description;
 
@@ -263,10 +276,14 @@
 	
     NSArray *storyNodes = [doc nodesForXPath:@"//story" error:nil];
     for(CXMLElement * storyNode in storyNodes) {
+		NSLog(@"Look, elmo, a story node: %@", storyNode);
         NSString *storyId = [[[storyNode elementsForName:@"id"] objectAtIndex:0] stringValue];
         NSString *title = [[[storyNode elementsForName:@"name"] objectAtIndex:0] stringValue];
 		NSString *description = [[[storyNode elementsForName:@"description"] objectAtIndex:0] stringValue];
         Story *story = [[Story alloc] initWithProject:project andStoryId:storyId andTitle:title andDescription:description];
+		story.type = [[[storyNode elementsForName:@"story_type"] objectAtIndex:0] stringValue];
+		//story.estimate = [[[storyNode elementsForName:@"estimate"] objectAtIndex:0] intValue];
+		story.reporter = [[[storyNode elementsForName:@"requested_by"] objectAtIndex:0] stringValue];
         [stories addObject:story];
     }
 
