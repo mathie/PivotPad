@@ -18,7 +18,7 @@
 
 @implementation StoriesViewController
 
-@synthesize stories, project, networkQueue, popoverController, projectsViewController;
+@synthesize stories, project, networkQueue, popoverController, projectsViewController, filter;
 
 #pragma mark -
 #pragma mark Initialization
@@ -41,7 +41,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = [project name];
-    [self getStoriesFromPivotal];
+
+	UISegmentedControl *segmented = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects: @"Done", @"Current", @"Backlog", @"Icebox", nil]];
+	
+	segmented.segmentedControlStyle = UISegmentedControlStyleBar;
+	segmented.selectedSegmentIndex = 1;
+	filter = 1;
+	[segmented addTarget:self action:@selector(filterChanged:) forControlEvents:UIControlEventValueChanged];
+
+	
+	UIBarButtonItem *item = [[[UIBarButtonItem alloc] initWithCustomView:segmented] autorelease];
+	UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+	[self.navigationController setToolbarHidden:NO];
+	self.toolbarItems = [NSArray arrayWithObjects:space, item, space, nil]; // [NSArray arrayWithObjects:item, nil];
+	[segmented release];
+	
+	//[self getStoriesFromPivotal];
 }
 
 /*
@@ -52,7 +67,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-	
+		
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 	NSString *token = [userDefaults objectForKey:@"token"];
 	if (token == nil || [token length] == 0) {
@@ -174,6 +189,13 @@
 
 #pragma mark -
 #pragma mark Pivotal requests
+
+- (IBAction)filterChanged:(id)sender {
+	UISegmentedControl *segmented = (UISegmentedControl *)sender;
+	filter = segmented.selectedSegmentIndex;
+	[self getStoriesFromPivotal];
+}
+
 - (void)getStoriesFromPivotal
 {
 	if (project == nil)
@@ -188,11 +210,34 @@
     [[self networkQueue] setRequestDidFinishSelector:@selector(requestFinished:)];
     [[self networkQueue] setRequestDidFailSelector:@selector(requestFailed:)];
     [[self networkQueue] setQueueDidFinishSelector:@selector(queueFinished:)];
-    NSString *urlString = [NSString stringWithFormat:@"http://fakept.heroku.com/services/v3/projects/%@/stories", [project projectId]];
+	
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDefaults objectForKey:@"token"];
+
+	NSString *urlString;
+	
+	switch (filter) {
+		case 0:
+			urlString = [NSString stringWithFormat:@"http://www.pivotaltracker.com/services/v3/projects/%@/iterations/done", [project projectId]];	
+			break;
+		case 1:
+			urlString = [NSString stringWithFormat:@"http://www.pivotaltracker.com/services/v3/projects/%@/iterations/current", [project projectId]];
+			break;
+		case 2:
+			urlString = [NSString stringWithFormat:@"http://www.pivotaltracker.com/services/v3/projects/%@/iterations/backlog", [project projectId]];
+			break;
+		case 3:
+			urlString = [NSString stringWithFormat:@"http://www.pivotaltracker.com/services/v3/projects/%@/stories?filter=state:unscheduled", [project projectId]];
+			break;
+		default:
+			urlString = [NSString stringWithFormat:@"http://fakept.heroku.com/services/v3/projects/%@/stories", [project projectId]];
+			break;
+	}
+	
     NSLog(@"Generated URL: %@", urlString);
     NSURL *url = [NSURL URLWithString:urlString];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    [request addRequestHeader:@"X-TrackerToken" value:@"sometokenstring"];
+    [request addRequestHeader:@"X-TrackerToken" value:token];
     [[self networkQueue] addOperation:request];
     
     [[self networkQueue] go];
@@ -206,14 +251,18 @@
     NSData *responseData = [request responseData];
     CXMLDocument *doc = [[[CXMLDocument alloc] initWithData:responseData options:0 error:nil] autorelease];
     
-    self.stories = [[NSMutableArray alloc] init];
+	if (self.stories == nil) {
+		self.stories = [[NSMutableArray alloc] init];
+	}
+	[stories removeAllObjects];
+	
     NSArray *storyNodes = [doc nodesForXPath:@"//story" error:nil];
     for(CXMLElement * storyNode in storyNodes) {
         NSString *storyId = [[[storyNode elementsForName:@"id"] objectAtIndex:0] stringValue];
         NSString *title = [[[storyNode elementsForName:@"name"] objectAtIndex:0] stringValue];
 		NSString *description = [[[storyNode elementsForName:@"description"] objectAtIndex:0] stringValue];
         Story *story = [[Story alloc] initWithProject:project andStoryId:storyId andTitle:title andDescription:description];
-        [(NSMutableArray *)stories addObject:story];
+        [stories addObject:story];
     }
 
     [self.tableView reloadData];
