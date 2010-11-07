@@ -258,6 +258,11 @@
     NSLog(@"Queue finished");
 }
 
+- (void)doLogin {
+	[self dismissModalViewControllerAnimated:YES];
+    [Project findAllAndTell:[self projectsViewController]];
+}
+
 #pragma mark -
 #pragma mark Split view support
 

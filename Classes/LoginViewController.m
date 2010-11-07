@@ -57,7 +57,7 @@
 - (IBAction) login:(id)sender {
 	
 	button.hidden = YES;
-	indicator.hidden = NO;
+	[indicator startAnimating];
 	
 	//[userDefaults setObject:((UITextField*)login).text forKey:@"username"];
 	//[userDefaults setObject:((UITextField*)password).text forKey:@"password"];
@@ -68,11 +68,12 @@
 	[request setPassword:password.text]; //@"iev7Quah"];
 	[request setDelegate:self];
 	[request startAsynchronous];
+    NSLog(@"Started HTTP request.");
 }
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-	
+	NSLog(@"Got back a response: %@", [request responseString]);
 	NSData *responseData = [request responseData];
 	CXMLDocument *doc = [[[CXMLDocument alloc] initWithData:responseData options:0 error:nil] autorelease];
 	
@@ -81,14 +82,18 @@
 	[userDefaults setObject:[[nodes objectAtIndex:0] stringValue] forKey:@"token"];
 	
 	button.hidden = NO;
-	indicator.hidden = YES;
+	[indicator stopAnimating];
 	[(DetailViewController*)delegate doLogin];
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
 	button.hidden = NO;
-	indicator.hidden = YES;
+	[indicator stopAnimating];
+
+    
+    NSError *error = [request error];
+    NSLog(@"Request %@ failed: %@", [request url], error);
 }
 
 - (void) setParent:(id)parent{

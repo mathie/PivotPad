@@ -123,10 +123,4 @@
 	[detailItem release];
 	[super dealloc];
 }	
-
-- (void)doLogin {
-	[self dismissModalViewControllerAnimated:YES];
-    [Project findAllAndTell:[self projectsViewController]];
-}
-
 @end
