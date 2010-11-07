@@ -36,4 +36,6 @@
 
 - (IBAction)filterChanged:(id)sender;
 
+- (void)doLogin;
+
 @end

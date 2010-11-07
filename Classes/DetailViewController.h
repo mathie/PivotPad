@@ -48,6 +48,4 @@
 @property (nonatomic, retain) IBOutlet UILabel    *estimateLabel;
 @property (nonatomic, retain) IBOutlet UILabel    *currentStateLabel;
 @property (nonatomic, retain) IBOutlet UITextView *descriptionTextView;
-
-- (void)doLogin;
 @end

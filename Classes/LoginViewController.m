@@ -83,7 +83,7 @@
 	
 	button.hidden = NO;
 	[indicator stopAnimating];
-	[(DetailViewController*)delegate doLogin];
+	[(StoriesViewController*)delegate doLogin];
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request
