@@ -95,6 +95,9 @@
     
     NSError *error = [request error];
     NSLog(@"Request %@ failed: %@", [request url], error);
+
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Failed" message:[NSString stringWithFormat:@"Login attempt failed: %@.",error] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
 }
 
 - (void) setParent:(id)parent{

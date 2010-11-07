@@ -257,6 +257,9 @@
     
     NSError *error = [request error];
     NSLog(@"Request %@ failed: %@", [request url], error);
+
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed to load stories" message:[NSString stringWithFormat:@"Failed to load stories: %@.",error] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
 }
 
 - (void)queueFinished:(ASINetworkQueue *)queue

@@ -79,6 +79,9 @@ static id projectDelegate;
 + (void)requestFailed:(ASIHTTPRequest *)request {
     NSError *error = [request error];
     NSLog(@"Request %@ failed: %@", [request url], error);
+
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Project load failed" message:[NSString stringWithFormat:@"Failed to load project list: %@.",error] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
 }
 
 - (Project *)initWithProjectId:(NSString *)aProjectId andName:(NSString *)aName {
