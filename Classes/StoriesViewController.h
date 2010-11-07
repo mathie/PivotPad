@@ -14,16 +14,18 @@
 @class ASINetworkQueue;
 
 @interface StoriesViewController : UITableViewController <UIPopoverControllerDelegate, UISplitViewControllerDelegate> {
-	NSArray *stories;
+	NSMutableArray *stories;
     Project *project;
     ASINetworkQueue *networkQueue;
+	NSInteger filter;
 	
 	UIPopoverController *popoverController;
 	ProjectsViewController *projectsViewController;
 }
 
-@property (nonatomic, retain) NSArray *stories;
+@property (nonatomic, retain) NSMutableArray *stories;
 @property (nonatomic, retain) Project *project;
+@property (nonatomic) NSInteger filter;
 
 @property (nonatomic, retain) ASINetworkQueue *networkQueue;
 
@@ -31,5 +33,7 @@
 @property (nonatomic, assign) IBOutlet ProjectsViewController *projectsViewController;
 
 - (void)getStoriesFromPivotal;
+
+- (IBAction)filterChanged:(id)sender;
 
 @end
