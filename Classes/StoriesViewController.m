@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = [project name];
-    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(setEditing:animated:)] animated:YES];
+    [self.navigationItem setRightBarButtonItem:self.editButtonItem animated:YES];
 
 	UISegmentedControl *segmented = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects: @"Done", @"Current", @"Backlog", @"Icebox", nil]];
 	
@@ -125,6 +125,10 @@
     // Pass the selected object to the new view controller.
     [self.navigationController pushViewController:detailViewController animated:YES];
     [detailViewController release];
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleNone;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
