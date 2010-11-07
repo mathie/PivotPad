@@ -239,7 +239,7 @@
 			urlString = [NSString stringWithFormat:@"https://www.pivotaltracker.com/services/v3/projects/%@/iterations/done", [project projectId]];	
 			break;
 		case 1:
-			urlString = [NSString stringWithFormat:@"https://www.pivotaltracker.com/services/v3/projects/%@/stories", [project projectId]];
+			urlString = [NSString stringWithFormat:@"https://www.pivotaltracker.com/services/v3/projects/%@/iterations/current", [project projectId]];
 			break;
 		case 2:
 			urlString = [NSString stringWithFormat:@"https://www.pivotaltracker.com/services/v3/projects/%@/iterations/backlog", [project projectId]];
