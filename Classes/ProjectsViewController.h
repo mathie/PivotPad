@@ -22,4 +22,5 @@
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
 @property (nonatomic, retain) NSArray *projects;
+
 @end

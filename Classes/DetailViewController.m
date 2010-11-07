@@ -9,10 +9,10 @@
 #import "DetailViewController.h"
 #import "ProjectsViewController.h"
 #import "Story.h"
+#import "Project.h"
 
 @interface DetailViewController ()
 @property (nonatomic, retain) UIPopoverController *popoverController;
-- (void)configureView;
 @end
 
 
@@ -126,7 +126,7 @@
 
 - (void)doLogin {
 	[self dismissModalViewControllerAnimated:YES];
-    [[self projectsViewController] getProjectsFromPivotal];
+    [Project findAllAndTell:[self projectsViewController]];
 }
 
 @end
