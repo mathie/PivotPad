@@ -7,13 +7,14 @@
 //
 
 #import "Project.h"
+#import "Story.h"
 #import "ASIHTTPRequest.h"
 #import "ASINetworkQueue.h"
 #import "TouchXML.h"
 
 @implementation Project
 
-@synthesize name, projectId, networkQueue;
+@synthesize name, projectId, stories, networkQueue;
 
 +(void)initialize {
     projectDelegate = nil;
@@ -29,7 +30,10 @@
 
 +(void)findAllAndTell:(id)delegate {
     [self setDelegate:delegate];
+    [self findAll];
+}
 
++(void)findAll {
     ASINetworkQueue *networkQueue = [ASINetworkQueue queue];
     [networkQueue setDelegate:self];
     [networkQueue setRequestDidFinishSelector:@selector(requestFinished:)];
@@ -64,12 +68,13 @@
         NSString *name = [[[projectNode elementsForName:@"name"] objectAtIndex:0] stringValue];
         Project *project = [[Project alloc] initWithProjectId:projectId andName:name];
         [(NSMutableArray *)projects addObject:project];
+        [project eagerLoadStories];
     }
 
     [[self delegate] projectsDidFindAll:[NSArray arrayWithArray:projects]];
 }
 
-- (void)requestFailed:(ASIHTTPRequest *)request {
++ (void)requestFailed:(ASIHTTPRequest *)request {
     NSError *error = [request error];
     NSLog(@"Request %@ failed: %@", [request url], error);
 }
@@ -80,6 +85,14 @@
         self.name = aName;
     }
     return self;
+}
+
+- (void)eagerLoadStories {
+    [Story findAllForProject:self andTell:self];
+}
+
+- (void)storiesDidFindAll:(NSArray *)someStories {
+    self.stories = someStories;
 }
 
 - (void) dealloc {
