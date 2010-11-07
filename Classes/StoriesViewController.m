@@ -122,6 +122,7 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		cell.imageView.image = [UIImage imageNamed:@"feature_icon.png"];
     }
     
     // Configure the cell...
