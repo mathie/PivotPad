@@ -19,22 +19,33 @@
     UIToolbar *toolbar;
     
     NSManagedObject *detailItem;
-    UILabel *detailDescriptionLabel;
-
     ProjectsViewController *projectsViewController;
+
+    Story *story;
+
+    UILabel *ownedByLabel;
+    UILabel *requestedByLabel;
+    UILabel *createdAtLabel;
+    UILabel *labelsLabel;
+    UILabel *estimateLabel;
+    UITextView *descriptionTextView;
 }
 
 @property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
 
 @property (nonatomic, retain) NSManagedObject *detailItem;
-@property (nonatomic, retain) IBOutlet UILabel *detailDescriptionLabel;
+
 
 @property (nonatomic, retain) Story *story;
 
 @property (nonatomic, assign) IBOutlet ProjectsViewController *projectsViewController;
 
+@property (nonatomic, retain) IBOutlet UILabel    *ownedByLabel;
+@property (nonatomic, retain) IBOutlet UILabel    *requestedByLabel;
+@property (nonatomic, retain) IBOutlet UILabel    *createdAtLabel;
+@property (nonatomic, retain) IBOutlet UILabel    *labelsLabel;
+@property (nonatomic, retain) IBOutlet UILabel    *estimateLabel;
+@property (nonatomic, retain) IBOutlet UITextView *descriptionTextView;
+
 - (void)doLogin;
-
-- (void)setStory: (Story *) newStory;
-
 @end

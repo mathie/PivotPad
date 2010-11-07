@@ -14,6 +14,8 @@
 
 @implementation Project
 
+static id projectDelegate;
+
 @synthesize name, projectId, stories, networkQueue;
 
 +(void)initialize {

@@ -10,8 +10,6 @@
 
 @class ASINetworkQueue;
 
-static id projectDelegate;
-
 @interface Project : NSObject {
 	NSString *projectId;
 	NSString *name;

@@ -19,36 +19,8 @@
 
 @implementation DetailViewController
 
-@synthesize toolbar, popoverController, detailItem, detailDescriptionLabel, projectsViewController, story;
-
-
-#pragma mark -
-#pragma mark Managing the detail item
-
-/*
- When setting the detail item, update the view and dismiss the popover controller if it's showing.
- */
-- (void)setDetailItem:(NSManagedObject *)managedObject {
-	
-	if (detailItem != managedObject) {
-		[detailItem release];
-		detailItem = [managedObject retain];
-		
-        // Update the view.
-        [self configureView];
-	}
-    
-    if (self.popoverController != nil) {
-        [self.popoverController dismissPopoverAnimated:YES];
-    }		
-}
-
-
-- (void)configureView {
-    // Update the user interface for the detail item.
-    detailDescriptionLabel.text = [[detailItem valueForKey:@"timeStamp"] description];
-}
-
+@synthesize toolbar, popoverController, detailItem, projectsViewController, story,
+    ownedByLabel, requestedByLabel, createdAtLabel, labelsLabel, estimateLabel, descriptionTextView;
 
 #pragma mark -
 #pragma mark Split view support
@@ -107,14 +79,11 @@
     [super viewDidAppear:animated];
 	
 	self.title = story.title;
-	
-	//TODO: reformat HTML templating once we have full story object model
-	
-	NSURL *baseURL = [NSURL URLWithString:@"https://www.pivotaltracker.com"];
-	NSString *head = @"<html><body style=\"font-family:Helvetica;\"><p>";
-	NSString *withBody = [head stringByAppendingString:story.description];
-	NSString *htmlString = [withBody stringByAppendingString:@"</p></body></html>"];
-	[webView loadHTMLString: htmlString baseURL: baseURL];
+    ownedByLabel.text = @"The poor schmuck who writes the software";
+    requestedByLabel.text = @"The Client from Hell";
+    createdAtLabel.text = @"Creation Date";
+    labelsLabel.text = @"label 1, label 2";
+    estimateLabel.text = [NSString stringWithFormat:@"%@ points", @"3"];
 }
 
 /*
@@ -151,8 +120,6 @@
     [toolbar release];
 	
 	[detailItem release];
-	[detailDescriptionLabel release];
-    
 	[super dealloc];
 }	
 
