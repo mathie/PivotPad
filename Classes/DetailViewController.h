@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import "Story.h"
 
 @class ProjectsViewController;
 
 @interface DetailViewController : UIViewController <UIPopoverControllerDelegate, UISplitViewControllerDelegate> {
-    
+	IBOutlet UIWebView *webView;
+	
     UIPopoverController *popoverController;
     UIToolbar *toolbar;
     
@@ -27,8 +29,12 @@
 @property (nonatomic, retain) NSManagedObject *detailItem;
 @property (nonatomic, retain) IBOutlet UILabel *detailDescriptionLabel;
 
+@property (nonatomic, retain) Story *story;
+
 @property (nonatomic, assign) IBOutlet ProjectsViewController *projectsViewController;
 
 - (void)doLogin;
+
+- (void)setStory: (Story *) newStory;
 
 @end

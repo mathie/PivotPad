@@ -10,7 +10,6 @@
 
 
 @interface LoginViewController : UIViewController {
-
 	IBOutlet UITextField *login;
 	IBOutlet UITextField *password;
 	IBOutlet UIButton *button;

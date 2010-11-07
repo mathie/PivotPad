@@ -180,6 +180,8 @@
     // Navigation logic may go here. Create and push another view controller.
     
     DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailView" bundle:nil];
+	[detailViewController setStory: [stories objectAtIndex: indexPath.row]];
+	
     // ...
     // Pass the selected object to the new view controller.
     [self.navigationController pushViewController:detailViewController animated:YES];
@@ -220,19 +222,19 @@
 	
 	switch (filter) {
 		case 0:
-			urlString = [NSString stringWithFormat:@"http://www.pivotaltracker.com/services/v3/projects/%@/iterations/done", [project projectId]];	
+			urlString = [NSString stringWithFormat:@"https://www.pivotaltracker.com/services/v3/projects/%@/iterations/done", [project projectId]];	
 			break;
 		case 1:
-			urlString = [NSString stringWithFormat:@"http://www.pivotaltracker.com/services/v3/projects/%@/iterations/current", [project projectId]];
+			urlString = [NSString stringWithFormat:@"https://www.pivotaltracker.com/services/v3/projects/%@/stories", [project projectId]];
 			break;
 		case 2:
-			urlString = [NSString stringWithFormat:@"http://www.pivotaltracker.com/services/v3/projects/%@/iterations/backlog", [project projectId]];
+			urlString = [NSString stringWithFormat:@"https://www.pivotaltracker.com/services/v3/projects/%@/iterations/backlog", [project projectId]];
 			break;
 		case 3:
-			urlString = [NSString stringWithFormat:@"http://www.pivotaltracker.com/services/v3/projects/%@/stories?filter=state:unscheduled", [project projectId]];
+			urlString = [NSString stringWithFormat:@"https://www.pivotaltracker.com/services/v3/projects/%@/stories?filter=state:unscheduled", [project projectId]];
 			break;
 		default:
-			urlString = [NSString stringWithFormat:@"http://fakept.heroku.com/services/v3/projects/%@/stories", [project projectId]];
+			urlString = [NSString stringWithFormat:@"https://www.pivotaltracker.com/services/v3/projects/%@/stories", [project projectId]];
 			break;
 	}
 	

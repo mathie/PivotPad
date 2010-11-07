@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 #import "ProjectsViewController.h"
+#import "Story.h"
 
 @interface DetailViewController ()
 @property (nonatomic, retain) UIPopoverController *popoverController;
@@ -18,7 +19,7 @@
 
 @implementation DetailViewController
 
-@synthesize toolbar, popoverController, detailItem, detailDescriptionLabel, projectsViewController;
+@synthesize toolbar, popoverController, detailItem, detailDescriptionLabel, projectsViewController, story;
 
 
 #pragma mark -
@@ -102,12 +103,19 @@
 }
 */
 
-/*
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 	
+	self.title = story.title;
+	
+	//TODO: reformat HTML templating once we have full story object model
+	
+	NSURL *baseURL = [NSURL URLWithString:@"https://www.pivotaltracker.com"];
+	NSString *head = @"<html><body style=\"font-family:Helvetica;\"><p>";
+	NSString *withBody = [head stringByAppendingString:story.description];
+	NSString *htmlString = [withBody stringByAppendingString:@"</p></body></html>"];
+	[webView loadHTMLString: htmlString baseURL: baseURL];
 }
-*/
 
 /*
 - (void)viewWillDisappear:(BOOL)animated {
