@@ -21,6 +21,8 @@
 	
 	UIPopoverController *popoverController;
 	ProjectsViewController *projectsViewController;
+	
+	BOOL hidden;
 }
 
 @property (nonatomic, retain) NSMutableArray *stories;

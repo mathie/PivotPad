@@ -56,6 +56,12 @@
 		[self presentModalViewController:login animated:YES];		
 	}
 	
+	hidden = NO;
+	self.splitViewController.delegate = self;
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+	hidden = YES;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -249,7 +255,9 @@
 #pragma mark Split view support
 
 - (void)splitViewController: (UISplitViewController*)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem*)barButtonItem forPopoverController: (UIPopoverController*)pc {
-    
+    if (hidden) {
+		//return;
+	}
 	barButtonItem.title = @"Projects";
 	[self.navigationController.navigationBar.topItem setLeftBarButtonItem:barButtonItem animated:YES];
 	self.popoverController = pc;
@@ -258,7 +266,10 @@
 
 // Called when the view is shown again in the split view, invalidating the button and popover controller.
 - (void)splitViewController: (UISplitViewController*)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem {
-    
+	if (hidden) {
+		//return;
+	}
+	
     [self.navigationController.navigationBar.topItem setLeftBarButtonItem:nil animated:YES];
     self.popoverController = nil;
 }

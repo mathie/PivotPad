@@ -27,8 +27,8 @@
 
 - (void)splitViewController: (UISplitViewController*)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem*)barButtonItem forPopoverController: (UIPopoverController*)pc {
     
-    barButtonItem.title = @"Navigate";
-    NSMutableArray *items = [[toolbar items] mutableCopy];
+    barButtonItem.title = @"Projects";
+    NSMutableArray *items = [self.navigationController.toolbarItems mutableCopy];
     [items insertObject:barButtonItem atIndex:0];
     [toolbar setItems:items animated:YES];
     [items release];
@@ -39,7 +39,7 @@
 // Called when the view is shown again in the split view, invalidating the button and popover controller.
 - (void)splitViewController: (UISplitViewController*)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem {
     
-    NSMutableArray *items = [[toolbar items] mutableCopy];
+    NSMutableArray *items = [self.navigationController.toolbarItems mutableCopy];
     [items removeObjectAtIndex:0];
     [toolbar setItems:items animated:YES];
     [items release];
@@ -84,9 +84,18 @@
     requestedByLabel.text    = story.requestedBy;
     createdAtLabel.text      = story.createdAt;
     labelsLabel.text         = story.labels;
-    estimateLabel.text       = [NSString stringWithFormat:@"%@ points", story.estimate];
+
+	if (story.estimate != nil) {
+		estimateLabel.text   = [NSString stringWithFormat:@"%@ points", story.estimate];
+	} else {
+		estimateLabel.text = @"unestimated";
+	}
+
+	
     currentStateLabel.text   = story.currentState;
     descriptionTextView.text = story.description;
+	
+	self.splitViewController.delegate = self;
 }
 
 /*
