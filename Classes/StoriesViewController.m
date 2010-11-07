@@ -26,6 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = [project name];
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(setEditing:animated:)] animated:YES];
 
 	UISegmentedControl *segmented = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects: @"Done", @"Current", @"Backlog", @"Icebox", nil]];
 	
@@ -128,6 +129,13 @@
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     return [[stories objectAtIndex:indexPath.row] canMoveStory];
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    Story *storyToMove = [[stories objectAtIndex:sourceIndexPath.row] retain];
+    [stories removeObjectAtIndex:sourceIndexPath.row];
+    [stories insertObject:storyToMove atIndex:destinationIndexPath.row];
+    [storyToMove release];
 }
 
 #pragma mark -
