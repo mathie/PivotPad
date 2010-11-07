@@ -59,6 +59,7 @@
 	
 	hidden = NO;
 	self.splitViewController.delegate = self;
+
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -177,8 +178,8 @@
 {
 	if (project == nil)
 		return;
-	
-	[self.navigationController popToRootViewControllerAnimated:YES];
+
+    [self.navigationController popToRootViewControllerAnimated:YES];
 	
 	self.navigationItem.title = project.name;
 	
@@ -242,6 +243,10 @@
         [stories addObject:story];
     }
 
+    if(self.popoverController) {
+        [self.popoverController dismissPopoverAnimated:YES];
+    }
+    
     [self.tableView reloadData];
 }
 
