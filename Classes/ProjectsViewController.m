@@ -35,7 +35,7 @@
     [super viewDidLoad];
     [Project findAllAndTell:self];
 	
-	self.navigationItem.title = @"Projects";
+	self.navigationItem.title = @"Projects";	
 }
 
 - (void)projectsDidFindAll:(NSArray *)allProjects {
@@ -48,11 +48,20 @@
 	[detailViewController getStoriesFromPivotal];
 }
 
-/*
+- (IBAction)refresh:(id)sender {
+	[Project findAllAndTell:self];
+}
+
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+	
+	[self.navigationController setToolbarHidden:NO];
+	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refresh:)];
+	self.toolbarItems = [NSArray arrayWithObjects:item, nil];
+	[item release];
 }
-*/
+//*/
 /*
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
