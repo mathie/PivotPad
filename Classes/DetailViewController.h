@@ -28,6 +28,7 @@
     UILabel *createdAtLabel;
     UILabel *labelsLabel;
     UILabel *estimateLabel;
+    UILabel *currentStateLabel;
     UITextView *descriptionTextView;
 }
 
@@ -45,6 +46,7 @@
 @property (nonatomic, retain) IBOutlet UILabel    *createdAtLabel;
 @property (nonatomic, retain) IBOutlet UILabel    *labelsLabel;
 @property (nonatomic, retain) IBOutlet UILabel    *estimateLabel;
+@property (nonatomic, retain) IBOutlet UILabel    *currentStateLabel;
 @property (nonatomic, retain) IBOutlet UITextView *descriptionTextView;
 
 - (void)doLogin;

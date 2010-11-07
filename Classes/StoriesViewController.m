@@ -126,6 +126,10 @@
     [detailViewController release];
 }
 
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [[stories objectAtIndex:indexPath.row] canMoveStory];
+}
+
 #pragma mark -
 #pragma mark Pivotal requests
 
@@ -199,41 +203,7 @@
 	
     NSArray *storyNodes = [doc nodesForXPath:@"//story" error:nil];
     for(CXMLElement * storyNode in storyNodes) {
-		NSLog(@"Look, elmo, a story node: %@", storyNode);
-        NSString *storyId = [[[storyNode elementsForName:@"id"] objectAtIndex:0] stringValue];
-        NSString *title = [[[storyNode elementsForName:@"name"] objectAtIndex:0] stringValue];
-		NSString *description = [[[storyNode elementsForName:@"description"] objectAtIndex:0] stringValue];
-        Story *story = [[Story alloc] initWithProject:project andStoryId:storyId andTitle:title andDescription:description];
-		story.storyType = [[[storyNode elementsForName:@"story_type"] objectAtIndex:0] stringValue];
-		
-		//the following set are optional, or potentially optional
-        NSArray *estimateEls = [storyNode elementsForName:@"estimate"];
-		if ([estimateEls count]>0) {
-			story.estimate = [[estimateEls objectAtIndex:0] stringValue];
-		}
-		
-		NSArray *labelEls = [storyNode elementsForName:@"labels"];
-		if ([labelEls count]>0) {
-			story.labels = [[labelEls objectAtIndex:0] stringValue];
-		}
-		
-		NSArray *requestedEls = [storyNode elementsForName:@"requested_by"];
-		if ([requestedEls count]>0) {
-			story.requestedBy = [[requestedEls objectAtIndex:0] stringValue];
-		}
-		
-		NSArray *acceptedEls = [storyNode elementsForName:@"accepted_at"];
-		if ([acceptedEls count]>0) {
-			story.acceptedAt = [[acceptedEls objectAtIndex:0] stringValue];
-		}
-		
-		NSArray *ownedEls = [storyNode elementsForName:@"owned_by"];
-		if ([ownedEls count]>0) {
-			story.ownedBy = [[ownedEls objectAtIndex:0] stringValue];
-		}
-		
-		story.createdAt = [[[storyNode elementsForName:@"created_at"] objectAtIndex:0] stringValue];
-		story.updatedAt = [[[storyNode elementsForName:@"updated_at"] objectAtIndex:0] stringValue];
+        Story *story = [Story storyFromXMLElement:storyNode];
 		
         [stories addObject:story];
     }

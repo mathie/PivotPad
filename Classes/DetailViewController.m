@@ -20,7 +20,7 @@
 @implementation DetailViewController
 
 @synthesize toolbar, popoverController, detailItem, projectsViewController, story,
-    ownedByLabel, requestedByLabel, createdAtLabel, labelsLabel, estimateLabel, descriptionTextView;
+    ownedByLabel, requestedByLabel, createdAtLabel, labelsLabel, estimateLabel, descriptionTextView, currentStateLabel;
 
 #pragma mark -
 #pragma mark Split view support
@@ -79,11 +79,13 @@
     [super viewDidAppear:animated];
 	
 	self.title = story.title;
-    ownedByLabel.text = story.ownedBy;
-    requestedByLabel.text = story.requestedBy;
-    createdAtLabel.text = story.createdAt;
-    labelsLabel.text = story.labels;
-    estimateLabel.text = [NSString stringWithFormat:@"%@ points", story.estimate];
+
+    ownedByLabel.text        = story.ownedBy;
+    requestedByLabel.text    = story.requestedBy;
+    createdAtLabel.text      = story.createdAt;
+    labelsLabel.text         = story.labels;
+    estimateLabel.text       = [NSString stringWithFormat:@"%@ points", story.estimate];
+    currentStateLabel.text   = story.currentState;
     descriptionTextView.text = story.description;
 }
 

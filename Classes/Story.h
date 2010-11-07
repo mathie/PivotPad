@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class Project;
+@class CXMLElement;
 
 @interface Story : NSObject {
     Project *project;
@@ -16,6 +17,7 @@
 	NSString *title;
 	NSString *description;
 	NSString *storyType;
+	NSString *currentState;
 	NSString *estimate;
 	NSString *labels;
 	NSString *requestedBy;
@@ -32,6 +34,7 @@
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSString *description;
 @property (nonatomic, retain) NSString *storyType;
+@property (nonatomic, retain) NSString *currentState;
 @property (nonatomic, retain) NSString *estimate;
 @property (nonatomic, retain) NSString *labels;
 @property (nonatomic, retain) NSString *requestedBy;
@@ -43,7 +46,10 @@
 @property (nonatomic, retain) NSString *comments;
 
 + (void)findAllForProject:(Project *)aProject andTell:(id)delegate;
++ (Story *)storyFromXMLElement:(CXMLElement *)storyElement;
+- (Story *)initFromXMLElement:(CXMLElement *)storyElement;
 
-- (Story *)initWithProject:(Project *)aProject andStoryId:(NSString *)aStoryId andTitle:(NSString *)aTitle andDescription:(NSString *)aDescription;
+-(BOOL)done;
+-(BOOL)canMoveStory;
 
 @end

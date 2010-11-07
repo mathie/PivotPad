@@ -137,7 +137,7 @@
 		8D1107310486CEB800E47090 /* PivotPad-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PivotPad-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		9126353D1285877000C4ED47 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		9126353E1285877000C4ED47 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		9126353F1285877000C4ED47 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		9126353F1285877000C4ED47 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LoginViewController.xib; path = Classes/LoginViewController.xib; sourceTree = "<group>"; };
 		912636581285BE5F00C4ED47 /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
 		912636591285BE5F00C4ED47 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
 		912636B41285C80D00C4ED47 /* ProjectsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectsViewController.h; sourceTree = "<group>"; };
@@ -193,7 +193,6 @@
 				2804200A108E984D000629CD /* DetailViewController.m */,
 				9126353D1285877000C4ED47 /* LoginViewController.h */,
 				9126353E1285877000C4ED47 /* LoginViewController.m */,
-				9126353F1285877000C4ED47 /* LoginViewController.xib */,
 				912636581285BE5F00C4ED47 /* Project.h */,
 				912636591285BE5F00C4ED47 /* Project.m */,
 				912636B41285C80D00C4ED47 /* ProjectsViewController.h */,
@@ -239,6 +238,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9126353F1285877000C4ED47 /* LoginViewController.xib */,
 				C9A28E99128655D70002CE86 /* Monochrome icons */,
 				C9A28E90128652DC0002CE86 /* Site icons */,
 				C96CB9471285BF1900609759 /* Icon-72.png */,
