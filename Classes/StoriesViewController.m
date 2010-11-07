@@ -201,6 +201,8 @@
 	if (project == nil)
 		return;
 	
+	[self.navigationController popToRootViewControllerAnimated:YES];
+	
 	self.navigationItem.title = project.name;
 	
     [[self networkQueue] cancelAllOperations];
