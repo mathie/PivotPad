@@ -79,11 +79,12 @@
     [super viewDidAppear:animated];
 	
 	self.title = story.title;
-    ownedByLabel.text = @"The poor schmuck who writes the software";
-    requestedByLabel.text = @"The Client from Hell";
-    createdAtLabel.text = @"Creation Date";
-    labelsLabel.text = @"label 1, label 2";
-    estimateLabel.text = [NSString stringWithFormat:@"%@ points", @"3"];
+    ownedByLabel.text = story.ownedBy;
+    requestedByLabel.text = story.requestedBy;
+    createdAtLabel.text = story.createdAt;
+    labelsLabel.text = story.labels;
+    estimateLabel.text = [NSString stringWithFormat:@"%@ points", story.estimate];
+    descriptionTextView.text = story.description;
 }
 
 /*

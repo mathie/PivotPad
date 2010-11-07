@@ -138,7 +138,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<string key="IBUIText">&lt;Owned By&gt;</string>
+						<string key="IBUIText"/>
 						<reference key="IBUITextColor" ref="206815993"/>
 						<reference key="IBUIHighlightedColor" ref="54045739"/>
 						<int key="IBUIBaselineAdjustment">1</int>
@@ -154,7 +154,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<string key="IBUIText">&lt;Requested By&gt;</string>
+						<string key="IBUIText"/>
 						<reference key="IBUITextColor" ref="206815993"/>
 						<reference key="IBUIHighlightedColor" ref="54045739"/>
 						<int key="IBUIBaselineAdjustment">1</int>
@@ -170,7 +170,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<string key="IBUIText">&lt;Date&gt;</string>
+						<string key="IBUIText"/>
 						<reference key="IBUITextColor" ref="206815993"/>
 						<reference key="IBUIHighlightedColor" ref="54045739"/>
 						<int key="IBUIBaselineAdjustment">1</int>
@@ -186,7 +186,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<string key="IBUIText">&lt;Labels&gt;</string>
+						<string key="IBUIText"/>
 						<reference key="IBUITextColor" ref="206815993"/>
 						<reference key="IBUIHighlightedColor" ref="54045739"/>
 						<int key="IBUIBaselineAdjustment">1</int>
@@ -202,7 +202,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<string key="IBUIText">&lt;Points&gt;</string>
+						<string key="IBUIText"/>
 						<reference key="IBUITextColor" ref="206815993"/>
 						<reference key="IBUIHighlightedColor" ref="54045739"/>
 						<int key="IBUIBaselineAdjustment">1</int>
@@ -222,71 +222,7 @@
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
 						<bool key="IBUIEditable">NO</bool>
-						<string type="base64-UTF8" key="IBUIText">TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQsIGNvbnNlY3RldHVyIGFkaXBpc2NpbmcgZWxpdC4gU2Vk
-IGlkIGxhY3VzIGEgdXJuYSBjb252YWxsaXMgdGluY2lkdW50LiBBZW5lYW4gdmVoaWN1bGEsIHJpc3Vz
-IHZlbCBkYXBpYnVzIG1hbGVzdWFkYSwgcXVhbSBsYWN1cyBtb2xlc3RpZSBlbGl0LCBhIGZlcm1lbnR1
-bSBtYWduYSB0ZWxsdXMgdXQgbnVuYy4gTnVsbGEgZmFjaWxpc2kuIFBlbGxlbnRlc3F1ZSBoYWJpdGFu
-dCBtb3JiaSB0cmlzdGlxdWUgc2VuZWN0dXMgZXQgbmV0dXMgZXQgbWFsZXN1YWRhIGZhbWVzIGFjIHR1
-cnBpcyBlZ2VzdGFzLiBQcm9pbiBmZXVnaWF0IHRyaXN0aXF1ZSBsYWNpbmlhLiBNb3JiaSBxdWlzIG51
-bmMgZWdldCB2ZWxpdCBydXRydW0gYWxpcXVhbSBlZ2V0IGlkIG1hdXJpcy4gSW50ZWdlciBtYXNzYSBq
-dXN0bywgYWxpcXVldCB2YXJpdXMgY29uc2VjdGV0dXIgcXVpcywgcG9ydHRpdG9yIGF1Y3RvciBlbGl0
-LiBQZWxsZW50ZXNxdWUgdWx0cmljZXMsIGR1aSBjb252YWxsaXMgcHJldGl1bSB2aXZlcnJhLCBkb2xv
-ciBuaXNsIGNvbnZhbGxpcyBlcm9zLCBub24gc2FnaXR0aXMgZW5pbSBsYWN1cyBhYyBuaXNsLiBQcm9p
-biB2dWxwdXRhdGUgZWdlc3RhcyBpbnRlcmR1bS4gUHJhZXNlbnQgZXQgYW50ZSBuZWMgbG9yZW0gcG9y
-dGEgdGluY2lkdW50LiBVdCBwaGFyZXRyYSBlcm9zIG5lYyBkdWkgdmFyaXVzIGxvYm9ydGlzLiBQaGFz
-ZWxsdXMgZXJvcyByaXN1cywgZGljdHVtIGluIHNvZGFsZXMgc2VkLCBmZXVnaWF0IHNpdCBhbWV0IGxv
-cmVtLiBQcmFlc2VudCBlbGVtZW50dW0gbmlzaSBlZ2V0IGxhY3VzIHBvc3VlcmUgZmFjaWxpc2lzLgoK
-U3VzcGVuZGlzc2UgcmhvbmN1cyBtYXNzYSBhIHRvcnRvciBpbnRlcmR1bSBiaWJlbmR1bS4gUHJhZXNl
-bnQgbm9uIGVsaXQgZW5pbS4gTnVsbGFtIHBvcnRhIHBvcnRhIGVsaXQgZmF1Y2lidXMgbG9ib3J0aXMu
-IE1hdXJpcyBhZGlwaXNjaW5nIGxhb3JlZXQgcHVydXMsIGV0IHBvcnR0aXRvciBlc3QgZnJpbmdpbGxh
-IHJob25jdXMuIE5hbSBpZCBtYXVyaXMgYXJjdSwgaW4gcG9zdWVyZSBuaXNpLiBQaGFzZWxsdXMgZXQg
-YXVndWUgbG9ib3J0aXMgZWxpdCBkaWduaXNzaW0gdmVoaWN1bGEuIFByb2luIHZlaGljdWxhIGxhY2lu
-aWEgZXJvcyBlZ2V0IGV1aXNtb2QuIFByb2luIHZlbCBsaWJlcm8gdXQgYW50ZSBlZ2VzdGFzIHByZXRp
-dW0gZWdldCBuZWMgbGFjdXMuIE51bGxhbSBzYXBpZW4gbGVjdHVzLCB1bGxhbWNvcnBlciBlZ2V0IHBv
-cnR0aXRvciBhYywgc2NlbGVyaXNxdWUgaWQgbGVvLiBDdXJhYml0dXIgdml0YWUgc2FwaWVuIHV0IG1h
-dXJpcyBkaWN0dW0gZmV1Z2lhdCBldSBpZCBsZWN0dXMuIE1hZWNlbmFzIGZhY2lsaXNpcyBydXRydW0g
-ZmF1Y2lidXMuIEFsaXF1YW0gaWQgbmlzbCBlZ2V0IG5pc2wgc3VzY2lwaXQgbHVjdHVzIHN1c2NpcGl0
-IGV1IGR1aS4gSW4gcGxhY2VyYXQgZXJhdCBhY2N1bXNhbiBkdWkgZmV1Z2lhdCBhIHZlaGljdWxhIGxl
-byByaG9uY3VzLiBVdCBmYXVjaWJ1cyBuZXF1ZSBpbiB1cm5hIHNlbXBlciBsb2JvcnRpcy4gTWFlY2Vu
-YXMgaWQgY3Vyc3VzIHF1YW0uCgpMb3JlbSBpcHN1bSBkb2xvciBzaXQgYW1ldCwgY29uc2VjdGV0dXIg
-YWRpcGlzY2luZyBlbGl0LiBDdW0gc29jaWlzIG5hdG9xdWUgcGVuYXRpYnVzIGV0IG1hZ25pcyBkaXMg
-cGFydHVyaWVudCBtb250ZXMsIG5hc2NldHVyIHJpZGljdWx1cyBtdXMuIFF1aXNxdWUgcG9ydGEganVz
-dG8gYXVndWUsIHV0IGZlcm1lbnR1bSBlcm9zLiBDcmFzIGp1c3RvIGRpYW0sIG1vbGVzdGllIHF1aXMg
-bHVjdHVzIGV1LCBhbGlxdWFtIGV0IG5lcXVlLiBRdWlzcXVlIGxvYm9ydGlzIGN1cnN1cyBuaXNpLCBz
-ZWQgc3VzY2lwaXQgbnVsbGEgdnVscHV0YXRlIHVsdHJpY2llcy4gTWFlY2VuYXMgbm9uIHB1cnVzIGlu
-IGFudGUgcnV0cnVtIGdyYXZpZGEgbm9uIGVnZXQgbGliZXJvLiBBZW5lYW4gZWxpdCBtZXR1cywgcGxh
-Y2VyYXQgZWdldCBwb3N1ZXJlIHZpdGFlLCBtb2xlc3RpZSBlZ2V0IGxpZ3VsYS4gRG9uZWMgY29uc2Vj
-dGV0dXIgY29uZGltZW50dW0gcmlzdXMgaWQgc29kYWxlcy4gQWxpcXVhbSBub24gdXJuYSBsaWd1bGEu
-IERvbmVjIHRpbmNpZHVudCB0ZW1wdXMgbGliZXJvLCBhIHRlbXB1cyByaXN1cyBwcmV0aXVtIHZlbC4g
-UGhhc2VsbHVzIHZlbmVuYXRpcyBwbGFjZXJhdCB2ZXN0aWJ1bHVtLiBDdXJhYml0dXIgYW50ZSBsZW8s
-IHBvcnR0aXRvciBxdWlzIGVsZW1lbnR1bSBhYywgc29sbGljaXR1ZGluIGlkIGlwc3VtLiBEb25lYyB2
-aXRhZSBzYXBpZW4gcXVpcyBhbnRlIGFkaXBpc2NpbmcgbHVjdHVzLiBOdW5jIHBvc3VlcmUsIG5pc2kg
-ZWdldCBhZGlwaXNjaW5nIHZlc3RpYnVsdW0sIGVsaXQgbWV0dXMgc29sbGljaXR1ZGluIGxpYmVybywg
-dml0YWUgbGFjaW5pYSBsZW8gbWkgaWQgZGlhbS4gRHVpcyBldSB2ZWxpdCBmcmluZ2lsbGEgb3JjaSBh
-dWN0b3Igb3JuYXJlLiBJbiBpZCBkdWkgZW5pbS4KCk1vcmJpIG1hbGVzdWFkYSBydXRydW0gYWxpcXVh
-bS4gTnVsbGEgZmFjaWxpc2kuIEV0aWFtIHZpdmVycmEgc2VtcGVyIGxpZ3VsYSwgc2VkIHN1c2NpcGl0
-IG5lcXVlIHN1c2NpcGl0IHF1aXMuIFF1aXNxdWUgcGVsbGVudGVzcXVlIGNvbW1vZG8gZWxpdCBldCBz
-dXNjaXBpdC4gRHVpcyBydXRydW0sIG5pc2kgYSBkaWN0dW0gbW9sbGlzLCBtYXNzYSBuZXF1ZSBibGFu
-ZGl0IGVyYXQsIHF1aXMgZmF1Y2lidXMgbGVvIGp1c3RvIGV0IHR1cnBpcy4gQWxpcXVhbSBlcmF0IHZv
-bHV0cGF0LiBBZW5lYW4gdml0YWUgbGliZXJvIGF0IGVyYXQgdmVoaWN1bGEgc2VtcGVyLiBRdWlzcXVl
-IHV0IHJob25jdXMgbWkuIEFlbmVhbiB2ZWwgZXJvcyBzYXBpZW4uIERvbmVjIGFudGUgZXJvcywgZGln
-bmlzc2ltIGV0IGJsYW5kaXQgc2l0IGFtZXQsIHZlbmVuYXRpcyBub24gbGVvLiBGdXNjZSB2b2x1dHBh
-dCB0ZWxsdXMgYSB0dXJwaXMgcHJldGl1bSBxdWlzIGFsaXF1ZXQgdXJuYSBsb2JvcnRpcy4gRXRpYW0g
-ZWdldCBuaXNsIGVnZXQgb2RpbyBtYXR0aXMgbGFjaW5pYSBub24gZmVybWVudHVtIG5pc2wuIE51bGxh
-bSB1dCBmYXVjaWJ1cyBuaXNsLiBNYXVyaXMgc29sbGljaXR1ZGluIGFjY3Vtc2FuIHZlbmVuYXRpcy4g
-UXVpc3F1ZSBuZWMgcmlzdXMgdmVuZW5hdGlzIHB1cnVzIGhlbmRyZXJpdCBtYWxlc3VhZGEgdmVsIG5v
-biBvcmNpLiBDdXJhYml0dXIgdml0YWUgbWV0dXMgZGlhbSwgdmVsIGNvbnNlY3RldHVyIGVsaXQuCgpR
-dWlzcXVlIHV0IHB1cnVzIHR1cnBpcywgdXQgaW50ZXJkdW0gYXVndWUuIFNlZCBtYXNzYSBsaWd1bGEs
-IHBoYXJldHJhIHF1aXMgYmliZW5kdW0gYXQsIHZlbmVuYXRpcyB2aXRhZSB0dXJwaXMuIEV0aWFtIGFk
-aXBpc2NpbmcgcG9zdWVyZSB0aW5jaWR1bnQuIE51bGxhIG5lYyBsYWN1cyBtYXNzYS4gU2VkIGEgdGVs
-bHVzIGFyY3UuIENyYXMgdXQgbmlzbCBlZ2V0IGxpYmVybyBzZW1wZXIgbW9sZXN0aWUuIFN1c3BlbmRp
-c3NlIHBvdGVudGkuIE51bGxhIGFsaXF1ZXQgZmFjaWxpc2lzIG1hc3NhLCBuZWMgZmV1Z2lhdCB0b3J0
-b3IgYXVjdG9yIGEuIFBlbGxlbnRlc3F1ZSBpbnRlcmR1bSBzYWdpdHRpcyB2ZWxpdCBldSBzYWdpdHRp
-cy4gUHJvaW4gbGlndWxhIGp1c3RvLCB2ZW5lbmF0aXMgc2VkIGVsZWlmZW5kIHNpdCBhbWV0LCBkYXBp
-YnVzIHZlbCBsZWN0dXMuIFNlZCBzZWQgbGlndWxhIGV1IG1pIGxhb3JlZXQgcG9ydHRpdG9yIGdyYXZp
-ZGEgc29sbGljaXR1ZGluIG51bGxhLiBTZWQgZmV1Z2lhdCwgbWkgZXUgcHVsdmluYXIgZGFwaWJ1cywg
-YXVndWUgdG9ydG9yIGxhb3JlZXQgYXJjdSwgYWMgcnV0cnVtIGxpYmVybyBlcm9zIHNpdCBhbWV0IGVu
-aW0uIFByb2luIHV0IHVsdHJpY2VzIGVuaW0uA</string>
+						<string key="IBUIText"/>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 							<int key="IBUIAutocapitalizationType">2</int>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -296,10 +232,7 @@ aW0uIFByb2luIHV0IHVsdHJpY2VzIGVuaW0uA</string>
 				</object>
 				<string key="NSFrameSize">{768, 960}</string>
 				<reference key="NSSuperview"/>
-				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">3</int>
-					<bytes key="NSWhite">MQA</bytes>
-				</object>
+				<reference key="IBUIBackgroundColor" ref="54045739"/>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics">
 					<int key="IBUIStatusBarStyle">2</int>
